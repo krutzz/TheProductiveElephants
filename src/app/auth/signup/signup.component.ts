@@ -20,7 +20,19 @@ export class SignupComponent implements OnInit {
     onSignUp(form: NgForm) {
       const email = form.value.email;
       const password = form.value.password;
-      this.AngularFA.auth.createUserWithEmailAndPassword(email, password);
+      this.AngularFA.auth.createUserWithEmailAndPassword(email, password).catch(function (error: any) {
+        // Handle Errors here.
+        const errorCode: string = error.code;
+        const errorMessage = error.message;
+        if (errorCode === 'auth/wrong-password') {
+          alert('Wrong password.');
+          // TODO show a beautiful messsage
+        } else {
+          // TODO show a beautiful messsage
+          alert(errorMessage);
+        }
+        console.log(error);
+      });
     }
 
 }
