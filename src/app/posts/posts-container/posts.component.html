@@ -1,0 +1,14 @@
+<div *ngIf="posts | async as postList else PostLoading">
+  <ul>
+    <li *ngFor="let post of postList">
+      <h1>{{post.title}}</h1>
+      <h1>{{post.$key}}</h1>
+    </li>
+  </ul>
+</div>
+
+<ng-template #PostLoading>
+  <div>
+    Loading..........
+  </div>
+</ng-template>

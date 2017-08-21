@@ -1,6 +1,7 @@
 import { RouterModule, Routes } from '@angular/router';
 
 import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
 import { AppComponent } from './app.component';
 import { AuthService } from './auth/auth.service';
@@ -11,16 +12,19 @@ import { MostpoluarComponent } from './ads/mostpoluar/mostpoluar.component';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PostnewadComponent } from './ads/postnewad/postnewad.component';
+import { PostsComponent } from './posts/posts-container/posts.component';
+import { PostsService } from './posts/providers/posts-service/Posts.service';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { environment } from '../environments/environment';
 
 const appRoutes: Routes = [
-  {path: '', component: CarouselComponent},
-  {path: 'mostpopular', component: MostpoluarComponent},
-  {path: 'postnewad', component: PostnewadComponent},
-  {path: 'signin', component: SigninComponent},
-  {path: 'signup', component: SignupComponent},
+  { path: '', redirectTo: 'posts', pathMatch: 'full' },
+  { path: 'posts', component: PostsComponent },
+  { path: 'mostpopular', component: MostpoluarComponent },
+  { path: 'postnewad', component: PostnewadComponent },
+  { path: 'signin', component: SigninComponent },
+  { path: 'signup', component: SignupComponent },
 ];
 
 @NgModule({
@@ -29,6 +33,7 @@ const appRoutes: Routes = [
     CarouselComponent,
     MostpoluarComponent,
     PostnewadComponent,
+    PostsComponent,
     SigninComponent,
     SignupComponent
   ],
@@ -36,10 +41,11 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
     NgbModule.forRoot(),
     RouterModule.forRoot(appRoutes),
   ],
-  providers: [AngularFireAuth, AuthService],
+  providers: [AngularFireAuth, AuthService, PostsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
