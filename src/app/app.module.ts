@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
 import { AppComponent } from './app.component';
+import { AuthService } from './auth/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { CarouselComponent } from './shared/carousel/carousel.component';
 import { FormsModule } from '@angular/forms';
@@ -38,7 +39,7 @@ const appRoutes: Routes = [
     NgbModule.forRoot(),
     RouterModule.forRoot(appRoutes),
   ],
-  providers: [AngularFireAuth],
+  providers: [AngularFireAuth, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

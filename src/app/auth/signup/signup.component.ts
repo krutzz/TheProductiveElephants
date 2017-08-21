@@ -1,8 +1,6 @@
-import * as firebase from 'firebase/app';
-
 import { Component, OnInit } from '@angular/core';
 
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AuthService } from './../auth.service';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -13,7 +11,7 @@ import { NgForm } from '@angular/forms';
 export class SignupComponent implements OnInit {
   alert: IAlert;
   anAlert: boolean;
-  constructor(private AngularFA: AngularFireAuth) { }
+  constructor(private AuthService: AuthService) { }
     ngOnInit() {
       this.anAlert = false;
       this.alert = {
@@ -25,7 +23,7 @@ export class SignupComponent implements OnInit {
     onSignUp(form: NgForm) {
       const email = form.value.email;
       const password = form.value.password;
-      this.AngularFA.auth.createUserWithEmailAndPassword(email, password).catch((error: any) => {
+      this.AuthService.createUserWithEmailAndPassword(email, password).catch((error: any) => {
         // Handle Errors here.
         const errorCode: string = error.code;
         const errorMessage = error.message;
