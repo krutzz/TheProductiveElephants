@@ -1,8 +1,8 @@
 <div class="container">
   <div *ngIf="posts | async as postList else PostLoading">
-    <div class="media mt-5 p-5" *ngFor="let post of postList">
-      <img class="d-flex mr-3 rounded" [src]="post.img" alt="">
-      <div class="media-body">
+    <div class="media mt-2 p-2 row" *ngFor="let post of postList">
+      <img class="d-flex mr-3 rounded col-md-3" [src]="post.img" alt="">
+      <div class="media-body col-md-9">
         <h5 class="mt-0">{{post.title}}</h5>
         <p> {{post.description}}</p>
       </div>
