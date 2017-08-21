@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<br>
+<h2> Post a new ad on the website</h2>
+<br>
+
+<form id="main" (ngSubmit)="onSubmitAd(f)" #f="ngForm" enctype="multipart/form-data">
+
+  <fieldset>
+    <legend>Please enter the ad details</legend>
+    <ol>
+      <li>
+        <label for="category">Category(*)</label>
+        <select name="category" id="category" required="" ngModel class="form-control">
+          <option value="BuyorSell">Buy or Sell</option>
+          <option value="CoursesandClasses">Courses and Classes</option>
+          <option value="Cars">Cars</option>
+          <option value="Properties">Properties</option>
+          <option value="Services">Services</option>
+          <option value="Jobs">Jobs</option>
+          <option value="Community">Community</option>
+          <option value="Events">Events</option>
+          <option value="Business Opportunities">Business Opportunities</option>
+        </select>
+        <div class="clear"></div>
+      </li>
+
+      <li>
+        <label for="title">Headline(*)</label>
+        <input id="title" ngModel class="form-control" name="title" type="text" placeholder="Please enter the ad title" required="" autofocus="">
+      </li>
+
+      <li>
+        <label for="description">Description(*)
+        <br>
+        </label>
+        <textarea id="description" name="description" rows="10" ngModel class="form-control"> </textarea>
+        <br>
+        <span class="sub-text" style="position:relative;left:120px">800 characters maximum</span>
+      </li>
+
+      <li>
+        <label for="price">Price (€):</label>
+        <input id="price" name="price" type="text" ngModel class="form-control">
+      </li>
+    </ol>
+
+    <ol id="additional-fields">
+
+      <li>
+        <label for="province"> Province </label>
+        <select name="province" ngModel class="form-control">
+          <option *ngFor="let prov of provinces;" [value] = prov>{{prov}}</option>
+        </select>
+      </li>
+    </ol>
+  </fieldset>
+
+  <fieldset id="images_fieldset">
+    <legend>Images</legend>
+    <ol>
+      <li>
+        <input type="file" name="images" id="images" multiple="multiple" ngModel class="form-control">
+        <span class="sub-text">
+          You can select up to <span id="images_number">5</span> Images </span>
+      </li>
+    </ol>
+  </fieldset>
+  (*) required fields
+  <fieldset>
+    <button type="submit">Submit</button>
+  </fieldset>
+</form>

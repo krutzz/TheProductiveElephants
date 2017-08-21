@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { MostpoluarComponent } from './ads/mostpoluar/mostpoluar.component';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PostnewadComponent } from './ads/postnewad/postnewad.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { environment } from '../environments/environment';
@@ -16,6 +17,7 @@ import { environment } from '../environments/environment';
 const appRoutes: Routes = [
   {path: '', component: CarouselComponent},
   {path: 'mostpopular', component: MostpoluarComponent},
+  {path: 'postnewad', component: PostnewadComponent},
   {path: 'signin', component: SigninComponent},
   {path: 'signup', component: SignupComponent},
 ];
@@ -25,6 +27,7 @@ const appRoutes: Routes = [
     AppComponent,
     CarouselComponent,
     MostpoluarComponent,
+    PostnewadComponent,
     SigninComponent,
     SignupComponent
   ],
