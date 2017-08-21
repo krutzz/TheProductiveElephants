@@ -11,6 +11,7 @@ import { NgForm } from '@angular/forms';
 export class SignupComponent implements OnInit {
   alert: IAlert;
   anAlert: boolean;
+  email: string;
   constructor(private AuthService: AuthService) { }
     ngOnInit() {
       this.anAlert = false;
@@ -21,9 +22,9 @@ export class SignupComponent implements OnInit {
     }
 
     onSignUp(form: NgForm) {
-      const email = form.value.email;
+      this.email = form.value.email;
       const password = form.value.password;
-      this.AuthService.createUserWithEmailAndPassword(email, password).catch((error: any) => {
+      this.AuthService.createUserWithEmailAndPassword(this.email, password).catch((error: any) => {
         // Handle Errors here.
         const errorCode: string = error.code;
         const errorMessage = error.message;
