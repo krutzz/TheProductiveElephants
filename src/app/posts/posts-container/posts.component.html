@@ -1,11 +1,15 @@
-<div *ngIf="posts | async as postList else PostLoading">
-  <ul>
-    <li *ngFor="let post of postList">
-      <h1>{{post.title}}</h1>
-      <h1>{{post.$key}}</h1>
-    </li>
-  </ul>
+<div class="container">
+  <div *ngIf="posts | async as postList else PostLoading">
+    <div class="media mt-5 p-5" *ngFor="let post of postList">
+      <img class="d-flex mr-3 rounded" [src]="post.img" alt="">
+      <div class="media-body">
+        <h5 class="mt-0">{{post.title}}</h5>
+        <p> {{post.description}}</p>
+      </div>
+    </div>
+  </div>
 </div>
+
 
 <ng-template #PostLoading>
   <div>
