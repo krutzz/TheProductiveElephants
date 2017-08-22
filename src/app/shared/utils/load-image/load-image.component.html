@@ -1,0 +1,2 @@
+<img *ngIf="!loaded" [src]="loadingSpiner" />
+<img [hidden]="!loaded" (load)="loaded = true" [src]="src" />
