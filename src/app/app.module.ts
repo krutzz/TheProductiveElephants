@@ -17,6 +17,7 @@ import { PostsService } from './posts/providers/posts-service/Posts.service';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { environment } from '../environments/environment';
+import { HeaderComponent } from './shared/header/header.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'posts', pathMatch: 'full' },
@@ -35,7 +36,8 @@ const appRoutes: Routes = [
     PostnewadComponent,
     PostsComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
