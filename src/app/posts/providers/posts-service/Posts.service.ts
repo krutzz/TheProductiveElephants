@@ -16,4 +16,8 @@ export class PostsService {
             }
         });
     }
+
+    getPostById(postId): Observable<Post> {
+        return this.af.object('/posts/' + postId);
+    }
 }
