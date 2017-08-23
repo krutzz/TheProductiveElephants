@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from './../auth.service';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -12,7 +13,7 @@ export class SignupComponent implements OnInit {
   alert: IAlert;
   anAlert: boolean;
   email: string;
-  constructor(private AuthService: AuthService) { }
+  constructor(private AuthService: AuthService, private Router: Router) { }
     ngOnInit() {
       this.anAlert = false;
       this.alert = {
@@ -35,6 +36,7 @@ export class SignupComponent implements OnInit {
         }
         console.log(error);
       });
+      this.Router.navigate(['/']);
     }
     public closeAlert(alert: IAlert) {
       alert.message = '';
