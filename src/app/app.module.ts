@@ -5,6 +5,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AuthGuard } from './auth/auth-guard.service';
 import { AuthService } from './auth/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { FooterComponent } from './shared/footer/footer.component';
@@ -36,7 +37,7 @@ import { environment } from '../environments/environment';
     NgbModule.forRoot(),
     AppRoutingModule,
   ],
-  providers: [AngularFireAuth, AuthService],
+  providers: [AngularFireAuth, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
