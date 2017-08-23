@@ -1,6 +1,7 @@
 import { RouterModule, Routes } from '@angular/router';
 
 import { MostpoluarComponent } from './ads/mostpoluar/mostpoluar.component';
+import { NgModule } from '@angular/core';
 import { PostnewadComponent } from './ads/postnewad/postnewad.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
@@ -14,4 +15,11 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
 ];
 
-export const AppRoutes = RouterModule.forRoot(routes);
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+
+export class AppRoutingModule {
+
+}

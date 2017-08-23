@@ -4,9 +4,10 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
 import { AppComponent } from './app.component';
-import { AppRoutes } from './app.routing';
+import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './auth/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
+import { FooterComponent } from './shared/footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './shared/header/header.component';
 import { MostpoluarComponent } from './ads/mostpoluar/mostpoluar.component';
@@ -16,7 +17,6 @@ import { PostnewadComponent } from './ads/postnewad/postnewad.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { environment } from '../environments/environment';
-import { FooterComponent } from './shared/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,7 @@ import { FooterComponent } from './shared/footer/footer.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     NgbModule.forRoot(),
-    AppRoutes,
+    AppRoutingModule,
   ],
   providers: [AngularFireAuth, AuthService],
   bootstrap: [AppComponent]
