@@ -16,4 +16,12 @@ export class AuthService {
     return this.AngularFA.auth.signInWithEmailAndPassword(email, password);
   }
 
+  currentUser() {
+    return this.AngularFA.auth.currentUser;
+  }
+
+  logOut() {
+    this.AngularFA.auth.signOut();
+  }
+
 }

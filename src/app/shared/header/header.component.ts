@@ -1,3 +1,4 @@
+import { AuthService } from './../../auth/auth.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+    constructor(private AuthService: AuthService) {
+    }
 
+    logOut() {
+      this.AuthService.logOut();
+    }
+    currentUser() {
+      return this.AuthService.currentUser();
+    }
 }
