@@ -14,8 +14,6 @@ import { HeaderComponent } from './shared/header/header.component';
 import { MostpoluarComponent } from './ads/mostpoluar/mostpoluar.component';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { PostnewadComponent } from './posts/postnewad/postnewad.component';
-import { PostsService } from './posts/providers/posts-service/Posts.service';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { environment } from '../environments/environment';
@@ -27,8 +25,7 @@ import { environment } from '../environments/environment';
     MostpoluarComponent,
     SigninComponent,
     SignupComponent,
-    FooterComponent,
-    PostnewadComponent
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +35,7 @@ import { environment } from '../environments/environment';
     NgbModule.forRoot(),
     AppRoutingModule
   ],
-  providers: [AngularFireAuth, AuthService, AuthGuard, PostsService],
+  providers: [AngularFireAuth, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

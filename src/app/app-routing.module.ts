@@ -11,7 +11,6 @@ const routes: Routes = [
   { path: '', redirectTo: 'posts', pathMatch: 'full' },
   { path: 'posts', loadChildren: './posts/posts.module#PostsModule' },
   { path: 'mostpopular', component: MostpoluarComponent },
-  { path: 'postnewad', component: PostnewadComponent, canActivate: [AuthGuard] },
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },
 ];

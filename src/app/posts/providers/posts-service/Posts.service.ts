@@ -1,5 +1,6 @@
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
+import { AngularFireAuth } from 'angularfire2/auth';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Post } from './../../../shared/models/post';
@@ -9,7 +10,11 @@ import { Router } from '@angular/router';
 export class PostsService {
 
   posts: FirebaseListObservable<any[]>;
-  constructor(private af: AngularFireDatabase, private Router: Router) { }
+  user;
+  constructor(private afAuth: AngularFireAuth, private af: AngularFireDatabase, private Router: Router) {
+    this.user = this.afAuth.authState;
+    this.posts = af.list('posts');
+  }
 
   getPosts(): Observable<Post[]> {
     return this.af.list('/posts', {
@@ -25,8 +30,8 @@ export class PostsService {
     description: string,
     price: number,
     province: string,
+    user
   ) {
-    this.posts = this.af.list('/posts');
     this.posts.push({
       category,
       title,
