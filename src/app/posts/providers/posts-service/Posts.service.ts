@@ -24,7 +24,7 @@ export class PostsService {
     title: string,
     description: string,
     price: number,
-    province: string
+    province: string,
   ) {
     this.posts = this.af.list('/posts');
     this.posts.push({
@@ -32,7 +32,8 @@ export class PostsService {
       title,
       description,
       price,
-      province
+      province,
+      user
     });
     this.Router.navigate(['/']);
   }
