@@ -14,17 +14,18 @@ import { HeaderComponent } from './shared/header/header.component';
 import { MostpoluarComponent } from './ads/mostpoluar/mostpoluar.component';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { PostnewadComponent } from './ads/postnewad/postnewad.component';
+import { PostNewAdService } from './posts/postnewad/postnewad.service';
+import { PostnewadComponent } from './posts/postnewad/postnewad.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
+    PostnewadComponent,
     AppComponent,
     HeaderComponent,
     MostpoluarComponent,
-    PostnewadComponent,
     SigninComponent,
     SignupComponent,
     FooterComponent
@@ -37,7 +38,7 @@ import { environment } from '../environments/environment';
     NgbModule.forRoot(),
     AppRoutingModule,
   ],
-  providers: [AngularFireAuth, AuthService, AuthGuard],
+  providers: [AngularFireAuth, AuthService, AuthGuard, PostNewAdService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
