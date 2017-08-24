@@ -10,7 +10,9 @@ export class AuthService {
   constructor(private AngularFA: AngularFireAuth, private Router: Router) { }
 
   createUserWithEmailAndPassword(email: string, password: string): firebase.Promise<any> {
-    return this.AngularFA.auth.createUserWithEmailAndPassword(email, password);
+    return this.AngularFA.auth.createUserWithEmailAndPassword(email, password).then((user) => {
+      return user;
+    });
   }
 
   signInWithEmailAndPassword(email: string, password: string): firebase.Promise<any> {
@@ -28,5 +30,4 @@ export class AuthService {
     this.AngularFA.auth.signOut();
     this.Router.navigate(['/']);
   }
-
 }
