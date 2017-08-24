@@ -14,21 +14,21 @@ import { HeaderComponent } from './shared/header/header.component';
 import { MostpoluarComponent } from './ads/mostpoluar/mostpoluar.component';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { PostNewAdService } from './posts/postnewad/postnewad.service';
 import { PostnewadComponent } from './posts/postnewad/postnewad.component';
+import { PostsService } from './posts/providers/posts-service/Posts.service';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
-    PostnewadComponent,
     AppComponent,
     HeaderComponent,
     MostpoluarComponent,
     SigninComponent,
     SignupComponent,
-    FooterComponent
+    FooterComponent,
+    PostnewadComponent
   ],
   imports: [
     BrowserModule,
@@ -36,9 +36,9 @@ import { environment } from '../environments/environment';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     NgbModule.forRoot(),
-    AppRoutingModule,
+    AppRoutingModule
   ],
-  providers: [AngularFireAuth, AuthService, AuthGuard, PostNewAdService],
+  providers: [AngularFireAuth, AuthService, AuthGuard, PostsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
