@@ -57,6 +57,7 @@ export class PostnewadComponent {
       description,
       price,
       province,
-      currentuser);
+      currentuser,
+      date);
   }
 }
