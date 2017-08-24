@@ -30,7 +30,8 @@ export class PostsService {
     description: string,
     price: number,
     province: string,
-    user
+    user,
+    date
   ) {
     this.posts.push({
       category,
@@ -38,7 +39,8 @@ export class PostsService {
       description,
       price,
       province,
-      user
+      user,
+      date
     });
     this.Router.navigate(['/']);
   }
