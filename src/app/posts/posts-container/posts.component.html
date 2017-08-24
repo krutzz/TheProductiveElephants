@@ -1,4 +1,4 @@
-<div class="container mb-5">
+<div class="container">
   <div *ngIf="posts | async as postList else PostLoading">
     <div class="media mt-2 p-2 row" *ngFor="let post of postList">
       <div class="d-flex mr-3 rounded col-md-3">
