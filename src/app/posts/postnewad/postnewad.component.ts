@@ -50,6 +50,7 @@ export class PostnewadComponent {
     const province = form.value.province;
     const currentuser = this.AuthService.currentUser().providerData;
     const images = form.value.images;
+    const date = new Date().toString();
 
     this.PostsService.postNewAd(
       category,
