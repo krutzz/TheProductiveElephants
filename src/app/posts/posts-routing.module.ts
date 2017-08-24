@@ -1,6 +1,7 @@
 import { RouterModule, Routes } from '@angular/router';
 
 import { AuthGuard } from '../auth/auth-guard.service';
+import { NgModule } from '@angular/core';
 import { PostComponent } from './post/post.component';
 import { PostnewadComponent } from './postnewad/postnewad.component';
 import { PostsComponent } from './posts-container/posts.component';
@@ -12,4 +13,11 @@ const routes: Routes = [
   { path: ':id', component: PostComponent }
 ];
 
-export const PostsRoutes = RouterModule.forChild(routes);
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+
+export class PostsRoutingModule {
+
+}
