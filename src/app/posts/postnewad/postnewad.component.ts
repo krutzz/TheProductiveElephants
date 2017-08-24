@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { NgForm } from '@angular/forms';
-import { PostNewAdService } from './postnewad.service';
+import { PostsService } from '../providers/posts-service/Posts.service';
 
 @Component({
   selector: 'app-postnewad',
@@ -10,7 +10,7 @@ import { PostNewAdService } from './postnewad.service';
 })
 export class PostnewadComponent {
 
-  constructor( private PostNewAdService: PostNewAdService ) { }
+  constructor(private PostsService: PostsService) { }
   provinces: string[] = [
     'Blagoevgrad',
     'Burgas',
@@ -39,20 +39,20 @@ export class PostnewadComponent {
     'Haskovo',
     'Shumen',
     'Yambol'
-];
+  ];
 
-onSubmitAd(form: NgForm) {
-  const category = form.value.category;
-  const title = form.value.title;
-  const description = form.value.description;
-  const price = form.value.price;
-  const province = form.value.province;
-  const images = form.value.images;
+  onSubmitAd(form: NgForm) {
+    const category = form.value.category;
+    const title = form.value.title;
+    const description = form.value.description;
+    const price = form.value.price;
+    const province = form.value.province;
+    const images = form.value.images;
 
-  this.PostNewAdService.postNewAd(category,
-  title,
-description,
-price,
-province);
-}
+    this.PostsService.postNewAd(category,
+      title,
+      description,
+      price,
+      province);
+  }
 }
