@@ -13,14 +13,13 @@ export class PostsService {
   user;
   constructor(private afAuth: AngularFireAuth, private af: AngularFireDatabase, private Router: Router) {
     this.user = this.afAuth.authState;
-    this.posts = af.list('posts');
+    this.posts = af.list('posts', { preserveSnapshot: true });
   }
 
   getPosts(): Observable<Post[]> {
     return this.af.list('/posts', {
       query: {
-        orderByKey: true,
-        limitToFirst: 5
+        orderByKey: true
       }
     });
   }

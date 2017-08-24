@@ -1,6 +1,6 @@
 <div class="container">
-  <div *ngIf="posts | async as postList else PostLoading">
-    <div class="media mt-2 p-2 row" *ngFor="let post of postList">
+  <div *ngIf="posts.length > 0 else PostLoading">
+    <div class="media mt-2 p-2 row" *ngFor="let post of posts">
       <div class=".col-sm-1 col-md-5 col-lg-4 col-xl-3">
         <app-load-image [src]="post.img"></app-load-image>
       </div>
@@ -12,10 +12,13 @@
       </div>
     </div>
   </div>
+  <div class="paggination">
+    <app-pagination [offset]="offset" [limit]="limit" [size]="count" (pageChange)="onPageChange($event)"></app-pagination>
+  </div>
 </div>
 
 <ng-template #PostLoading>
-  <div class="d-flex justify-content-center align-items-center">
-    <img [src]="loadingSpiner">
+  <div class=" d-flex justify-content-center align-items-center ">
+    <img [src]="loadingSpiner ">
   </div>
 </ng-template>
