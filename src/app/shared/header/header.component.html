@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar navbar-expand-lg navbar-toggleable-lg navbar-dark fixed-top bg-dark">
     <a class="navbar-brand" routerLink="">
         <img id="logo" src="/assets/imgs/logo.png" alt="">
     </a>
@@ -8,7 +8,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item" routerLinkActive="active"  [routerLinkActiveOptions]="{exact:true}">
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
                 <a class="nav-link" routerLink="/posts/all">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item" routerLinkActive="active">
@@ -16,9 +16,6 @@
             </li>
             <li *ngIf="currentUser()" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
                 <a class="nav-link" routerLink="/posts/new">Post a New Ad</a>
-            </li>
-            <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link disabled" href="#">Disabled</a>
             </li>
         </ul>
         <ul class="navbar-nav">
