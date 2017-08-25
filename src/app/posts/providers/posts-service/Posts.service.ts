@@ -1,3 +1,7 @@
+import 'firebase/storage';
+
+import * as firebase from 'firebase/app';
+
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -8,10 +12,9 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class PostsService {
-
   posts: FirebaseListObservable<any[]>;
   user;
-  constructor(private afAuth: AngularFireAuth, private af: AngularFireDatabase, private Router: Router) {
+  constructor(public afAuth: AngularFireAuth, public af: AngularFireDatabase, private Router: Router) {
     this.user = this.afAuth.authState;
     this.posts = af.list('posts', { preserveSnapshot: true });
   }
@@ -24,24 +27,53 @@ export class PostsService {
     });
   }
 
-  postNewAd(category: string,
+  postNewAd(
+    category: string,
     title: string,
     description: string,
     price: number,
     province: string,
     user,
-    date
+    date,
+    files
   ) {
-    this.posts.push({
-      category,
-      title,
-      description,
-      price,
-      province,
-      user,
-      date
-    });
+    const imageUrls = new Array();
+    Promise.all(
+      this.uploadImage(files)
+    )
+      .then((images) =>
+        this.posts.push({
+          images,
+          category,
+          title,
+          description,
+          price,
+          province,
+          user,
+          date
+        }));
     this.Router.navigate(['/']);
+
+  }
+
+  uploadImage(data) {
+    const promises = new Array;
+    for (const item of data) {
+      const promise = new Promise((res, rej) => {
+        const date = new Date();
+        const fileName = `${date.toString()}_${item.name}`;
+        const uploadTask = firebase.storage().ref(`/posts/${fileName}`).put(item);
+        uploadTask.on('state_changed', function (snapshot) {
+        }, function (error) {
+          rej(error);
+        }, function () {
+          const downloadURL = uploadTask.snapshot.downloadURL;
+          res(downloadURL);
+        });
+      });
+      promises.push(promise);
+    }
+    return promises;
   }
 
   getPostById(postId): Observable<Post> {
