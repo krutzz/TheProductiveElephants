@@ -14,18 +14,15 @@ import { Router } from '@angular/router';
 export class PostsService {
   posts: FirebaseListObservable<any[]>;
   user;
-  urls;
   constructor(public afAuth: AngularFireAuth, public af: AngularFireDatabase, private Router: Router) {
     this.user = this.afAuth.authState;
-    this.posts = af.list('posts');
-    const urls = new Array;
+    this.posts = af.list('posts', { preserveSnapshot: true });
   }
 
   getPosts(): Observable<Post[]> {
     return this.af.list('/posts', {
       query: {
-        orderByKey: true,
-        limitToFirst: 5
+        orderByKey: true
       }
     });
   }
