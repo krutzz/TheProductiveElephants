@@ -7,13 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-    constructor(private AuthService: AuthService) {
-    }
+  constructor(private AuthService: AuthService) {
+  }
 
-    logOut() {
-      this.AuthService.logOut();
-    }
-    currentUser() {
-      return this.AuthService.currentUser();
-    }
+  logOut() {
+    this.AuthService.logOut();
+  }
+  currentUser() {
+    return this.AuthService.currentUser();
+  }
 }

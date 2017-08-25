@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
-
   constructor(private AngularFA: AngularFireAuth, private Router: Router) { }
 
   createUserWithEmailAndPassword(email: string, password: string): firebase.Promise<any> {
@@ -26,8 +25,13 @@ export class AuthService {
     return this.AngularFA.auth.currentUser;
   }
 
+  get currentUserObservable(): any {
+    return this.AngularFA.authState;
+  }
+
   logOut() {
     this.AngularFA.auth.signOut();
     this.Router.navigate(['/']);
   }
+
 }
