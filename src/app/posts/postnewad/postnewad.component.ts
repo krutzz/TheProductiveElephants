@@ -10,7 +10,7 @@ import { PostsService } from '../providers/posts-service/Posts.service';
   styleUrls: ['./postnewad.component.css']
 })
 export class PostnewadComponent {
-
+  files: File[];
   constructor(private PostsService: PostsService, private AuthService: AuthService) { }
   provinces: string[] = [
     'Blagoevgrad',
@@ -41,7 +41,9 @@ export class PostnewadComponent {
     'Shumen',
     'Yambol'
   ];
-
+  onChange(event) {
+    this.files = event.srcElement.files;
+  }
   onSubmitAd(form: NgForm) {
     const category = form.value.category;
     const title = form.value.title;
@@ -49,9 +51,7 @@ export class PostnewadComponent {
     const price = form.value.price;
     const province = form.value.province;
     const currentuser = this.AuthService.currentUser().providerData;
-    const images = form.value.images;
     const date = new Date().toString();
-
     this.PostsService.postNewAd(
       category,
       title,
@@ -59,6 +59,7 @@ export class PostnewadComponent {
       price,
       province,
       currentuser,
-      date);
+      date,
+      this.files);
   }
 }

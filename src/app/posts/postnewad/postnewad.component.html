@@ -55,11 +55,11 @@
     </ol>
   </fieldset>
 
-  <fieldset id="images_fieldset">
+  <fieldset>
     <legend>Images</legend>
     <ol>
       <li>
-        <input type="file" name="images" id="images" multiple="multiple" ngModel class="form-control">
+        <input type="file" name="images" id="images" (change)="onChange($event)" multiple="multiple" ngModel class="form-control">
         <span class="sub-text">
           You can select up to <span id="images_number">5</span> Images </span>
       </li>
