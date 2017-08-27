@@ -1,0 +1,14 @@
+:host::ng-deep img {
+    width: 20em;
+}
+
+.image-container {
+    border: 2px solid #687FB0;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 480px) {
+    :host::ng-deep.images img {
+        width: 75%;
+    }
+}

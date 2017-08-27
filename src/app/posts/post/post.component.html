@@ -1,10 +1,48 @@
-<div class="container">
+<div class="container-fluid">
   <div *ngIf="post | async | newPost as post else PostLoading">
-    <div class="media mt-2 p-2 row">
-      <app-load-image [src]="post.img"></app-load-image>
-      <div class="media-body col-md-9">
-        <h5 class="mt-0">{{post.title}}</h5>
-        <p> {{post.description}}</p>
+    <div class="row">
+      <div class="col-xs-12 col-md-5 col-lg-5">
+        <app-load-image [src]="post.img"></app-load-image>
+      </div>
+      <div class="col-xs-12 col-md-7 col-lg-7">
+        <div class="row">
+          <div class="col-4 col-md-3">
+            <h4>Title</h4>
+          </div>
+          <div class="col-3">{{post.title}}</div>
+        </div>
+        <div class="row">
+          <div class="col-4 col-md-3">
+            <h4>Category</h4>
+          </div>
+          <div class="col-3">{{post.category}}</div>
+        </div>
+        <div class="row">
+          <div class="col-4 col-md-3">
+            <h4>Date</h4>
+          </div>
+          <div class="col-3">{{post.date | date}}</div>
+        </div>
+        <div class="row">
+          <div class="col-4 col-md-3">
+            <h4>Price</h4>
+          </div>
+          <div class="col-3">{{post.price | currency:'EUR':true}}</div>
+        </div>
+        <div class="row">
+          <div class="col-4 col-md-3">
+            <h4>Province</h4>
+          </div>
+          <div class="col-3">{{post.province}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      {{post.description}}
+    </div>
+    <div class="image-container container-fluid mt-2">
+      <div class="col-4 d-inline" *ngFor="let image of post.images">
+        <app-load-image class="images" [src]="image"></app-load-image>
       </div>
     </div>
   </div>
