@@ -50,7 +50,8 @@ export class PostsComponent implements OnInit, OnDestroy {
 
     this.sub = this.postsObservable.subscribe(snapshot => {
       this.count = snapshot.length;
-      this.posts = snapshot.slice(offset, offset + limit);
+      this.posts = snapshot.slice(offset, offset + limit)
+                    .map(v => new Post(v));
     });
 
   }
