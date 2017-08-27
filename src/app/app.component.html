@@ -1,5 +1,13 @@
 <app-header></app-header>
-<div class="container">
-    <router-outlet></router-outlet>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-8 col-lg-12 col-md-12 col-xs-12">
+            <router-outlet></router-outlet>
+        </div>
+        <div class="col-xl-4 col-lg-12  col-md-12 col-xs-12">
+            <app-carousel></app-carousel>
+        </div>
+    </div>
 </div>
+
 <app-footer></app-footer>

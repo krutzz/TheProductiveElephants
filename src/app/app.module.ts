@@ -17,6 +17,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { UnAuthGuard } from './auth/gards/un-auth.guard';
+import { UtilsModule } from './shared/utils/utils.module';
 import { environment } from '../environments/environment';
 
 @NgModule({
@@ -33,8 +34,9 @@ import { environment } from '../environments/environment';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    NgbModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule,
+    UtilsModule
   ],
   providers: [AngularFireAuth, AuthService, AuthGuard, UnAuthGuard],
   bootstrap: [AppComponent]
