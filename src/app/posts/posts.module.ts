@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { NewPostPipe } from '../new-post.pipe';
 import { NgModule } from '@angular/core';
 import { PostComponent } from './post/post.component';
 import { PostnewadComponent } from './postnewad/postnewad.component';
@@ -13,7 +14,8 @@ import { environment } from '../../environments/environment';
   declarations: [
     PostsComponent,
     PostComponent,
-    PostnewadComponent
+    PostnewadComponent,
+    NewPostPipe
   ],
   imports: [
     CommonModule,

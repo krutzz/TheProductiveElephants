@@ -1,9 +1,7 @@
 <div class="container">
-  <div *ngIf="post | async as post else PostLoading">
+  <div *ngIf="post | async | newPost as post else PostLoading">
     <div class="media mt-2 p-2 row">
-      <img class="d-flex mr-3 rounded col-md-3" *ngIf="!loaded" src="https://firebasestorage.googleapis.com/v0/b/nglx-98be4.appspot.com/o/loading.gif?alt=media&token=8a2ffb61-6356-4fbb-89c0-7045f3009832"
-      />
-      <img class="d-flex mr-3 rounded col-md-3" [hidden]="!loaded" (load)="loaded = true" [src]="post.img" />
+      <app-load-image [src]="post.img"></app-load-image>
       <div class="media-body col-md-9">
         <h5 class="mt-0">{{post.title}}</h5>
         <p> {{post.description}}</p>

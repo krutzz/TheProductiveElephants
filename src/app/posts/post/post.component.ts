@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import { Post } from '../../shared/models/post';
 import { PostsService } from '../providers/posts-service/Posts.service';
 
 @Component({
@@ -10,7 +12,7 @@ import { PostsService } from '../providers/posts-service/Posts.service';
 })
 export class PostComponent implements OnInit {
   id;
-  post;
+  post: Observable<Post>;
   constructor(private route: ActivatedRoute, private postsService: PostsService) { }
 
   ngOnInit() {
