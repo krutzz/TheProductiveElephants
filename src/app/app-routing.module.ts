@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { PostnewadComponent } from './posts/postnewad/postnewad.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
-import { UnAuthGuard } from './auth/gards/un-auth.guard';
+import { UnAuthGuard } from './auth/guards/un-auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'posts', pathMatch: 'full' },

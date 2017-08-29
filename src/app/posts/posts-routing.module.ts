@@ -1,6 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthGuard } from '../auth/gards/auth.guard';
+import { AuthGuard } from '../auth/guards/auth.guard';
 import { NgModule } from '@angular/core';
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { PostnewadComponent } from './postnewad/postnewad.component';
