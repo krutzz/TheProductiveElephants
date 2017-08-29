@@ -1,5 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 
+import { AuthGuard } from './auth/guards/auth.guard';
 import { MostpoluarComponent } from './ads/mostpoluar/mostpoluar.component';
 import { NgModule } from '@angular/core';
 import { PostnewadComponent } from './posts/postnewad/postnewad.component';
@@ -13,7 +14,7 @@ const routes: Routes = [
   { path: 'mostpopular', component: MostpoluarComponent },
   { path: 'signin', component: SigninComponent, canActivate: [UnAuthGuard] },
   { path: 'signup', component: SignupComponent, canActivate: [UnAuthGuard] },
-  { path: 'user', loadChildren: './users/users.module#UsersModule' },
+  { path: 'user', loadChildren: './users/users.module#UsersModule', canActivate: [AuthGuard] },
 ];
 
 @NgModule({

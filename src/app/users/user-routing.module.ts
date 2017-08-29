@@ -7,7 +7,7 @@ import { UsersDetailComponent } from './../users/users-detail/users-detail.compo
 
 const routes: Routes = [
   { path: '', redirectTo: 'id', pathMatch: 'full' },
-  { path: 'id', component: UsersDetailComponent, canActivate: [AuthGuard] }
+  { path: ':id', component: UsersDetailComponent }
 ];
 
 @NgModule({
