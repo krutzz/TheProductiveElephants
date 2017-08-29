@@ -5,7 +5,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthGuard } from './auth/gards/auth.guard';
+import { AuthGuard } from './auth/guards/auth.guard';
 import { AuthService } from './auth/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { FooterComponent } from './shared/footer/footer.component';
@@ -16,7 +16,7 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
-import { UnAuthGuard } from './auth/gards/un-auth.guard';
+import { UnAuthGuard } from './auth/guards/un-auth.guard';
 import { UtilsModule } from './shared/utils/utils.module';
 import { environment } from '../environments/environment';
 
