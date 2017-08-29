@@ -10,7 +10,6 @@ export class AuthService {
 
   createUserWithEmailAndPassword(email: string, password: string): firebase.Promise<any> {
     return this.AngularFA.auth.createUserWithEmailAndPassword(email, password).then((user) => {
-      console.log(this.AngularFA.auth.currentUser);
       return user;
     });
   }

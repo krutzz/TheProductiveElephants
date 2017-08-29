@@ -17,6 +17,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { UnAuthGuard } from './auth/guards/un-auth.guard';
+import { UsersModule } from './users/users.module';
 import { UtilsModule } from './shared/utils/utils.module';
 import { environment } from '../environments/environment';
 
@@ -27,7 +28,7 @@ import { environment } from '../environments/environment';
     MostpoluarComponent,
     SigninComponent,
     SignupComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +37,8 @@ import { environment } from '../environments/environment';
     AngularFireDatabaseModule,
     AppRoutingModule,
     NgbModule,
-    UtilsModule
+    UtilsModule,
+    UsersModule
   ],
   providers: [AngularFireAuth, AuthService, AuthGuard, UnAuthGuard],
   bootstrap: [AppComponent]

@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: 'mostpopular', component: MostpoluarComponent },
   { path: 'signin', component: SigninComponent, canActivate: [UnAuthGuard] },
   { path: 'signup', component: SignupComponent, canActivate: [UnAuthGuard] },
+  { path: 'user', loadChildren: './users/users.module#UsersModule' },
 ];
 
 @NgModule({
