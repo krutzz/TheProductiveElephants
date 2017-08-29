@@ -2,26 +2,7 @@
   <div *ngIf="posts.length > 0 else PostLoading">
     <ul class="list-unstyled">
       <li class="mt-2" *ngFor="let post of posts">
-        <div class="card">
-          <div class="card-header text-center">{{post.user[0].email}}</div>
-          <div class="card-block">
-            <div class="media mt-2 p-2 row text-center text-sm-center text-md-left text-lg-left">
-              <div class="col-xs-12 col-md-5 col-lg-4">
-                <app-load-image [src]="post.img"></app-load-image>
-              </div>
-              <div class="media-body col-xs-12 col-md-7 col-lg-8">
-                <a [routerLink]="[ '/posts', post.$key ]">
-                  <h5 class="mt-0">{{post.title}}</h5>
-                </a>
-                <p> {{post.description}}</p>
-              </div>
-            </div>
-          </div>
-          <div class="card-footer d-flex justify-content-between align-bottom">
-            <div>{{post.date | date}}</div>
-            <div>Price: {{post.price | currency:'EUR':true }}</div>
-          </div>
-        </div>
+        <app-post [post]="post"></app-post>
       </li>
     </ul>
   </div>
