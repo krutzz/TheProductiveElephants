@@ -17,41 +17,38 @@ export class PostsComponent implements OnInit, OnDestroy {
   limit = 5;
   count = 0;
   loadingSpiner: string;
-  posts: Post[];
-  sub: Subscription;
+  posts: Post[] = [];
+  postSub: Subscription;
 
-  postsObservable: Observable<Post[]>;
   constructor(private postsService: PostsService) {
     // tslint:disable-next-line:max-line-length
     this.loadingSpiner = 'https://firebasestorage.googleapis.com/v0/b/nglx-98be4.appspot.com/o/loading.gif?alt=media&token=8a2ffb61-6356-4fbb-89c0-7045f3009832';
   }
 
   ngOnInit() {
-    this.postsObservable = this.postsService.getPosts();
     this.getAll(this.offset, this.limit);
   }
 
   ngOnDestroy() {
-    if (!!this.sub) {
-      this.sub.unsubscribe();
+    if (!!this.postSub) {
+      this.postSub.unsubscribe();
     }
   }
 
   onPageChange(offset: number) {
+    if (!!this.postSub) {
+      this.postSub.unsubscribe();
+    }
+    this.posts = [];
     this.offset = offset;
     this.getAll(this.offset, this.limit);
   }
 
   getAll(offset: number, limit: number) {
-    this.posts = [];
-    if (!!this.sub) {
-      this.sub.unsubscribe();
-    }
-
-    this.sub = this.postsObservable.subscribe(snapshot => {
+    this.postSub = this.postsService.getPosts().subscribe(snapshot => {
       this.count = snapshot.length;
       this.posts = snapshot.slice(offset, offset + limit)
-                    .map(v => new Post(v));
+        .map(v => new Post(v));
     });
 
   }

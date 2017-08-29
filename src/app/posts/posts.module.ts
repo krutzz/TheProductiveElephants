@@ -9,13 +9,15 @@ import { PostsRoutingModule } from './posts-routing.module';
 import { PostsService } from './providers/posts-service/Posts.service';
 import { UtilsModule } from './../shared/utils/utils.module';
 import { environment } from '../../environments/environment';
+import { PostDetailsComponent } from './post-details/post-details.component';
 
 @NgModule({
   declarations: [
     PostsComponent,
     PostComponent,
     PostnewadComponent,
-    NewPostPipe
+    NewPostPipe,
+    PostDetailsComponent
   ],
   imports: [
     CommonModule,
