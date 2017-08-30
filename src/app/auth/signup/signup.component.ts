@@ -33,10 +33,12 @@ export class SignupComponent implements OnInit {
           this.anAlert = true;
           this.alert.message = errorMessage;
           this.alert.type = 'danger';
+          console.log(error);
+        } else {
+          this.Router.navigate(['/']);
         }
-        console.log(error);
       });
-      this.Router.navigate(['/']);
+
     }
     public closeAlert(alert: IAlert) {
       alert.message = '';
