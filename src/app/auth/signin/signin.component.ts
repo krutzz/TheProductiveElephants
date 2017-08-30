@@ -25,15 +25,13 @@ export class SigninComponent implements OnInit {
       }).catch((error: any) => {
         // Handle Errors here.
         if (error) {
-          this.alert.newAlert = true;
-          this.alert.message = error.message;
-          this.alert.type = 'danger';
+          this.alert.danger(error.message);
           console.log(error);
         }
         console.log(error);
       });
     }
     public closeAlert(alert: Alert) {
-      this.alert.Close();
+      this.alert.close();
     }
 }

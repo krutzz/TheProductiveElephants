@@ -24,10 +24,7 @@ export class SignupComponent implements OnInit {
       this.AuthService.createUserWithEmailAndPassword(this.email, password).catch((error: any) => {
         // Handle Errors here.
         if (error) {
-          this.alert.newAlert = true;
-          this.alert.message = error.message;
-          this.alert.type = 'danger';
-          console.log(error);
+          this.alert.danger(error.message);
         } else {
           this.Router.navigate(['/']);
         }
@@ -35,6 +32,6 @@ export class SignupComponent implements OnInit {
 
     }
     public closeAlert(alert: Alert) {
-      this.alert.Close();
+      this.alert.close();
     }
 }

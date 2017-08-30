@@ -8,9 +8,14 @@ export class Alert {
     this.message = '';
     this.type = '';
   }
-  public Close(): void {
+  public close(): void {
     this.newAlert = false;
     this.message = '';
     this.type = '';
+  }
+  public danger(errorMessage: string): void {
+    this.newAlert = true;
+    this.message = errorMessage;
+    this.type = 'danger';
   }
 }
