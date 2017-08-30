@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Alert } from './../../shared/models/alert';
 import { AuthService } from './../auth.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -10,16 +11,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  alert: IAlert;
-  anAlert: boolean;
+  alert: Alert;
   email: string;
   constructor(private AuthService: AuthService, private Router: Router) { }
     ngOnInit() {
-      this.anAlert = false;
-      this.alert = {
-        type: '',
-        message: '',
-      };
+      this.alert = new Alert();
     }
 
     onSignUp(form: NgForm) {
@@ -27,11 +23,9 @@ export class SignupComponent implements OnInit {
       const password = form.value.password;
       this.AuthService.createUserWithEmailAndPassword(this.email, password).catch((error: any) => {
         // Handle Errors here.
-        const errorCode: string = error.code;
-        const errorMessage = error.message;
-        if (errorCode) {
-          this.anAlert = true;
-          this.alert.message = errorMessage;
+        if (error) {
+          this.alert.newAlert = true;
+          this.alert.message = error.message;
           this.alert.type = 'danger';
           console.log(error);
         } else {
@@ -40,15 +34,7 @@ export class SignupComponent implements OnInit {
       });
 
     }
-    public closeAlert(alert: IAlert) {
-      alert.message = '';
-      alert.type = '';
-      this.anAlert = false;
+    public closeAlert(alert: Alert) {
+      this.alert.Close();
     }
-}
-
-// TODO move to a models folder
-export interface IAlert {
-  type: string;
-  message: string;
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Alert } from './../../shared/models/alert';
 import { AuthService } from '../auth.service';
 import { NgForm } from '@angular/forms';
 
@@ -9,16 +10,11 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent implements OnInit {
-  alert: IAlert;
-  anAlert: boolean;
+  alert: Alert;
   email: string;
   constructor(private AuthService: AuthService) { }
     ngOnInit() {
-      this.anAlert = false;
-      this.alert = {
-        type: '',
-        message: '',
-      };
+      this.alert = new Alert();
     }
 
     onSignIn(form: NgForm) {
@@ -28,25 +24,16 @@ export class SigninComponent implements OnInit {
         console.log(userInfo);
       }).catch((error: any) => {
         // Handle Errors here.
-        const errorCode: string = error.code;
-        const errorMessage = error.message;
-        if (errorCode) {
-          this.anAlert = true;
-          this.alert.message = errorMessage;
+        if (error) {
+          this.alert.newAlert = true;
+          this.alert.message = error.message;
           this.alert.type = 'danger';
+          console.log(error);
         }
         console.log(error);
       });
     }
-    public closeAlert(alert: IAlert) {
-      alert.message = '';
-      alert.type = '';
-      this.anAlert = false;
+    public closeAlert(alert: Alert) {
+      this.alert.Close();
     }
-}
-
-// TODO move to a models folder
-export interface IAlert {
-  type: string;
-  message: string;
 }

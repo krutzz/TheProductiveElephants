@@ -11,7 +11,7 @@
             </div>
             <button class="btn btn-succsses" type="submit" [disabled]="!f.valid">Sign In</button>
         </form>
-        <div class="pt-4" *ngIf="anAlert">
+        <div class="pt-4" *ngIf="alert.newAlert">
             <ngb-alert [type]="alert.type" (close)="closeAlert(alert)">{{ alert.message }}</ngb-alert>
         </div>
     </div>
