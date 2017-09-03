@@ -2,6 +2,7 @@ import * as firebase from 'firebase/app';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 
 @Injectable()
@@ -25,11 +26,11 @@ export class AuthService {
     return this.AngularFA.auth.currentUser;
   }
 
-  get currentUserObservable(): any {
+  get currentUserObservable(): Observable<firebase.User> {
     return this.AngularFA.authState;
   }
 
-  logOut() {
+  logOut(): void {
     this.AngularFA.auth.signOut();
     this.Router.navigate(['/']);
   }
