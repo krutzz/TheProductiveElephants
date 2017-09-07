@@ -70,7 +70,7 @@ export class PostnewadComponent {
     const province = form.value.province;
     const currentuser = this.AuthService.currentUser().providerData;
     const date = new Date().toString();
-    const seen = 1;
+    const views = 1;
     this.PostsService.postNewAd(
       category,
       title,
@@ -80,6 +80,6 @@ export class PostnewadComponent {
       currentuser,
       date,
       this.files,
-      seen);
+      views);
   }
 }

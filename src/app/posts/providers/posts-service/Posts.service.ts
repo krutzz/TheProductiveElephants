@@ -42,7 +42,7 @@ export class PostsService {
     user,
     date,
     files,
-    seen
+    views
   ) {
     const imageUrls = new Array();
     Promise.all(
@@ -58,7 +58,7 @@ export class PostsService {
           province,
           user,
           date,
-          seen
+          views
         }));
     this.Router.navigate(['/']);
 
