@@ -11,7 +11,7 @@
                 <a class="nav-link" routerLink="/posts/all">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" routerLink="/mostpopular">Most Popular ads</a>
+                <a class="nav-link" routerLink="/posts/mostpopular">Most Popular ads</a>
             </li>
             <li *ngIf="currentUser()" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
                 <a class="nav-link" routerLink="/posts/new">Post a New Ad</a>

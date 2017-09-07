@@ -1,0 +1,15 @@
+<div class="container-fluid">
+    <div *ngIf="posts | async as posts else PostLoading">
+        <ul class="list-unstyled">
+            <li class="mt-2" *ngFor="let post of posts | reverse">
+                <app-post [post]="post | newPost"></app-post>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<ng-template #PostLoading>
+    <div class=" d-flex justify-content-center align-items-center ">
+        <img [src]="loadingSpiner ">
+    </div>
+</ng-template>

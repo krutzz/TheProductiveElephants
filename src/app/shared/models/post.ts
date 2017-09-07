@@ -10,6 +10,8 @@ export class Post {
     public category: string;
     public price: string;
     public province: string;
+
+    public seen: number;
     public user;
     constructor(
         {
@@ -21,6 +23,7 @@ export class Post {
             category,
             price,
             province,
+            seen,
             user
         }) {
         this.$key = $key;
@@ -31,6 +34,7 @@ export class Post {
         this.category = category;
         this.price = price;
         this.province = province;
+        this.seen = seen;
         this.user = user;
     }
 

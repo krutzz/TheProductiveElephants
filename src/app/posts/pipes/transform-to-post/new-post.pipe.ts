@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { Post } from './shared/models/post';
+import { Post } from '../../../shared/models/post';
 
 @Pipe({
   name: 'newPost'

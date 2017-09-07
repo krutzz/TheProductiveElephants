@@ -7,7 +7,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FirebaseModule } from './firebase/firebase.module';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
-import { MostpoluarComponent } from './ads/mostpoluar/mostpoluar.component';
 import { NgModule } from '@angular/core';
 import { UsersModule } from './users/users.module';
 import { UtilsModule } from './shared/utils/utils.module';
@@ -16,7 +15,6 @@ import { UtilsModule } from './shared/utils/utils.module';
   declarations: [
     AppComponent,
     HeaderComponent,
-    MostpoluarComponent,
     FooterComponent,
   ],
   imports: [

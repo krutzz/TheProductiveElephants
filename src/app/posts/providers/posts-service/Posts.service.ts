@@ -27,6 +27,12 @@ export class PostsService {
     });
   }
 
+  getPostsByQuery(query): Observable<Post[]> {
+    return this.af.list('/posts', {
+      query: query
+    });
+  }
+
   postNewAd(
     category: string,
     title: string,
