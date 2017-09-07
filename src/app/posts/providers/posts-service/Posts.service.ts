@@ -85,4 +85,15 @@ export class PostsService {
   getPostById(postId): Observable<Post> {
     return this.af.object('/posts/' + postId);
   }
+
+  updateViews(postId) {
+    this.af.object(`posts/${postId}/views`).$ref
+      .ref.transaction(views => {
+        if (views === null) {
+          return views = 1;
+        } else {
+          return views + 1;
+        }
+      });
+  }
 }

@@ -53,6 +53,5 @@ export class PostsComponent implements OnInit, OnDestroy {
       this.posts = snapshot.slice(offset, offset + limit)
         .map(v => new Post(v));
     });
-
   }
 }
