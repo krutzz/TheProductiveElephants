@@ -45,7 +45,10 @@ export class PostsComponent implements OnInit, OnDestroy {
   }
 
   getAll(offset: number, limit: number) {
-    this.postSub = this.postsService.getPosts().subscribe(snapshot => {
+    this.postSub = this.postsService.getPostsByQuery({
+      orderByChild: 'date'
+    }).subscribe(snapshot => {
+      snapshot.reverse();
       this.count = snapshot.length;
       this.posts = snapshot.slice(offset, offset + limit)
         .map(v => new Post(v));
