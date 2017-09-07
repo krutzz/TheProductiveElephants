@@ -41,7 +41,8 @@ export class PostsService {
     province: string,
     user,
     date,
-    files
+    files,
+    seen
   ) {
     const imageUrls = new Array();
     Promise.all(
@@ -56,7 +57,8 @@ export class PostsService {
           price,
           province,
           user,
-          date
+          date,
+          seen
         }));
     this.Router.navigate(['/']);
 
