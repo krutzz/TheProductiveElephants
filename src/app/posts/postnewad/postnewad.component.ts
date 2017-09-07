@@ -11,6 +11,7 @@ import { PostsService } from '../providers/posts-service/Posts.service';
 })
 export class PostnewadComponent {
   files: File[];
+  url: string[] = [];
   constructor(private PostsService: PostsService, private AuthService: AuthService) { }
   provinces: string[] = [
     'Blagoevgrad',
@@ -43,7 +44,24 @@ export class PostnewadComponent {
   ];
   onChange(event) {
     this.files = event.srcElement.files;
+
+    if (event.target.files) {
+      console.log(event.target.files);
+      const tFiles = event.target.files;
+      const length = tFiles.length;
+      for (let i = 0; i < length; i++) {
+        if (tFiles[i]) {
+          let reader: any;
+          reader = new FileReader();
+          reader.onload = (ev) => {
+            this.url.push(ev.target.result);
+          };
+          reader.readAsDataURL(tFiles[i]);
+        }
+      }
+    }
   }
+
   onSubmitAd(form: NgForm) {
     const category = form.value.category;
     const title = form.value.title;

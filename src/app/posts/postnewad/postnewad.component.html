@@ -63,6 +63,9 @@
         <span class="sub-text">
           You can select up to <span id="images_number">5</span> Images </span>
       </li>
+
+      <!-- <img *ngFor="let item of url" [src]="item" alt="Preview"> -->
+      <app-load-image *ngFor="let file of url" [src]="file"></app-load-image>
     </ol>
   </fieldset>
   (*) required fields
