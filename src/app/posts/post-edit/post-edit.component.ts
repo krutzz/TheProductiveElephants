@@ -1,18 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ActivatedRoute } from '@angular/router';
 import { AuthService } from './../../auth/auth.service';
 import { NgForm } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
+import { Post } from '../../shared/models/post';
 import { PostsService } from '../providers/posts-service/Posts.service';
 
 @Component({
-  selector: 'app-postnewad',
-  templateUrl: './postnewad.component.html',
-  styleUrls: ['./postnewad.component.css']
+  selector: 'app-post-edit',
+  templateUrl: './post-edit.component.html',
+  styleUrls: ['./post-edit.component.css']
 })
-export class PostnewadComponent {
+export class PostEditComponent implements OnInit {
   files: File[];
-  url: string[] = [];
-  constructor(private PostsService: PostsService, private AuthService: AuthService) { }
+  urls: string[] = [];
+  id;
+  post: any;
+  constructor(private route: ActivatedRoute, private postsService: PostsService, private AuthService: AuthService) { }
   provinces: string[] = [
     'Blagoevgrad',
     'Burgas',
@@ -42,10 +47,15 @@ export class PostnewadComponent {
     'Shumen',
     'Yambol'
   ];
+  ngOnInit(): void {
+    this.id = this.route.snapshot.params.id;
+    this.post = this.postsService.getPostById(this.id);
+  }
   onChange(event) {
     this.files = event.srcElement.files;
-
+    this.post.images = [];
     if (event.target.files) {
+      this.urls = [];
       const tFiles = event.target.files;
       const length = tFiles.length;
       for (let i = 0; i < length; i++) {
@@ -53,7 +63,7 @@ export class PostnewadComponent {
           let reader: any;
           reader = new FileReader();
           reader.onload = (ev) => {
-            this.url.push(ev.target.result);
+            this.urls.push(ev.target.result);
           };
           reader.readAsDataURL(tFiles[i]);
         }
@@ -69,8 +79,8 @@ export class PostnewadComponent {
     const province = form.value.province;
     const currentuser = this.AuthService.currentUser().providerData;
     const date = new Date().toString();
-    const views = 1;
-    this.PostsService.postNewAd(
+    const seen = 1;
+    this.postsService.postEdit(
       category,
       title,
       description,
@@ -79,6 +89,7 @@ export class PostnewadComponent {
       currentuser,
       date,
       this.files,
-      views);
+      seen,
+      this.id);
   }
 }

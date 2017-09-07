@@ -5,6 +5,7 @@ import { NewPostPipe } from './pipes/transform-to-post/new-post.pipe';
 import { NgModule } from '@angular/core';
 import { PostComponent } from './post/post.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
+import { PostEditComponent } from './post-edit/post-edit.component';
 import { PostnewadComponent } from './postnewad/postnewad.component';
 import { PostsComponent } from './posts-container/posts.component';
 import { PostsRoutingModule } from './posts-routing.module';
@@ -22,7 +23,8 @@ import { environment } from '../../environments/environment';
     PostDetailsComponent,
     MostpoluarComponent,
     ReversePipe,
-  ],
+    PostEditComponent
+],
   imports: [
     CommonModule,
     FormsModule,

@@ -61,7 +61,36 @@ export class PostsService {
           views
         }));
     this.Router.navigate(['/']);
+  }
 
+  postEdit(
+    category: string,
+    title: string,
+    description: string,
+    price: number,
+    province: string,
+    user,
+    date,
+    files,
+    seen,
+    id
+  ) {
+    const imageUrls = new Array();
+    Promise.all(
+      this.uploadImage(files)
+    )
+      .then((images) =>
+        this.af.object(`posts/${id}`).update({
+          images,
+          category,
+          title,
+          description,
+          price,
+          province,
+          user,
+          date,
+          seen
+        }));
   }
 
   uploadImage(data) {
