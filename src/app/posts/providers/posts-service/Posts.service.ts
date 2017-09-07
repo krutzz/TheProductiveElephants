@@ -72,7 +72,7 @@ export class PostsService {
     user,
     date,
     files,
-    seen,
+    views,
     id
   ) {
     const imageUrls = new Array();
@@ -89,7 +89,7 @@ export class PostsService {
           province,
           user,
           date,
-          seen
+          views
         }));
   }
 
