@@ -11,7 +11,7 @@ describe('Service: PostsService', () => {
     });
   });
 
-  it('should ...', inject([PostsService], (service: PostsService) => {
-    expect(service).toBeTruthy();
-  }));
+  // it('should ...', inject([PostsService], (service: PostsService) => {
+  //   expect(service).toBeTruthy();
+  // }));
 });
