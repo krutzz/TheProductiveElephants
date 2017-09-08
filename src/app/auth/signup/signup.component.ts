@@ -4,6 +4,7 @@ import { Alert } from './../../shared/models/alert';
 import { AuthService } from './../auth.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from '../../shared/models/user';
 
 @Component({
   selector: 'app-signup',
@@ -13,25 +14,34 @@ import { Router } from '@angular/router';
 export class SignupComponent implements OnInit {
   alert: Alert;
   email: string;
-  constructor(private AuthService: AuthService, private Router: Router) { }
-    ngOnInit() {
-      this.alert = new Alert();
-    }
+  password: string;
+  firstName: string;
+  lastName: string;
+  province: string;
 
-    onSignUp(form: NgForm) {
-      this.email = form.value.email;
-      const password = form.value.password;
-      this.AuthService.createUserWithEmailAndPassword(this.email, password).catch((error: any) => {
-        // Handle Errors here.
-        if (error) {
-          this.alert.danger(error.message);
-        } else {
-          this.Router.navigate(['/']);
-        }
+  constructor(private AuthService: AuthService, private Router: Router) { }
+  ngOnInit() {
+    this.alert = new Alert();
+  }
+
+  onSignUp(form: NgForm) {
+    //this.email = form.value.email;
+    this.password = form.value.password;
+    this.firstName = form.value.firstName;
+    this.lastName = form.value.lastName;
+    this.province = form.value.province;
+
+    const user = new User(this.email, this.firstName, this.lastName, 'kaspichan');
+    this.AuthService.createUser(user, this.password)
+      .then(newUser => {
+        this.Router.navigate(['/']);
+      })
+      .catch((error: any) => {
+        this.alert.danger(error.message);
       });
 
-    }
-    public closeAlert(alert: Alert) {
-      this.alert.close();
-    }
+  }
+  public closeAlert(alert: Alert) {
+    this.alert.close();
+  }
 }

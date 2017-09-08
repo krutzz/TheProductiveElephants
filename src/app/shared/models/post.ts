@@ -8,7 +8,7 @@ export class Post {
     public images: string[];
     public date: string;
     public category: string;
-    public price: string;
+    public price: any;
     public province: string;
 
     public views: number;

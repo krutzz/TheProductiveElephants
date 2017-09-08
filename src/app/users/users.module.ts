@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UserResolverService } from './user-resolver.service';
 import { UserRoutingModule } from './user-routing.module';
 import { UsersDetailComponent } from './users-detail/users-detail.component';
+import { UsersService } from './users.service';
 
 @NgModule({
   imports: [
@@ -12,6 +13,6 @@ import { UsersDetailComponent } from './users-detail/users-detail.component';
     ReactiveFormsModule,
   ],
   declarations: [UsersDetailComponent],
-  providers: [UserResolverService]
+  providers: [UserResolverService, UsersService]
 })
 export class UsersModule { }

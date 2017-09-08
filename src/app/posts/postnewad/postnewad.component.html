@@ -10,7 +10,7 @@
     <ol>
       <li>
         <label for="category">Category(*)</label>
-        <select name="category" id="category" required="" ngModel class="form-control">
+        <select name="category" id="category" #cat="ngModel" [(ngModel)] = "post.category" class="form-control" required>
           <option value="BuyorSell">Buy or Sell</option>
           <option value="CoursesandClasses">Courses and Classes</option>
           <option value="Cars">Cars</option>
@@ -23,34 +23,44 @@
         </select>
         <div class="clear"></div>
       </li>
-
+      <div *ngIf="cat.invalid && cat.touched" class="alert alert-danger">Invalid category</div>
       <li>
         <label for="title">Headline(*)</label>
-        <input id="title" ngModel class="form-control" name="title" type="text" placeholder="Please enter the ad title" required="" autofocus="">
+        <input id="title" [(ngModel)] = "post.title" #title="ngModel" class="form-control" minlength="5" maxlength="30"
+        name="title" type="text" placeholder="Please enter the ad title" required>
+        <div *ngIf="title.invalid && title.touched" class="alert alert-danger">Title must be between 5 and 30 symbols</div>
       </li>
 
       <li>
         <label for="description">Description(*)
         <br>
         </label>
-        <textarea id="description" name="description" rows="10" ngModel class="form-control"> </textarea>
+        <textarea id="description" name="description" rows="10" minlength="5" maxlength="800" required
+        [(ngModel)] = "post.description" #desc="ngModel" class="form-control"> </textarea>
+
+        <div *ngIf="desc.invalid && desc.touched" class="alert alert-danger">Description must be between 5 and 800 symbols</div>
         <br>
         <span class="sub-text" style="position:relative;left:120px">800 characters maximum</span>
       </li>
 
       <li>
-        <label for="price">Price (€):</label>
-        <input id="price" name="price" type="text" ngModel class="form-control">
+        <label for="price">Price(*) (€):</label>
+        <input id="price" name="price" type="text" [(ngModel)] = "post.price" #price="ngModel"
+        class="form-control" minlength="1" maxlength="10" required>
+
+        <div *ngIf="price.invalid && price.touched" class="alert alert-danger">Invalid price</div>
       </li>
     </ol>
 
     <ol id="additional-fields">
 
       <li>
-        <label for="province"> Province </label>
-        <select name="province" ngModel class="form-control">
+        <label for="province"> Province(*) </label>
+        <select name="province" [(ngModel)] = "post.province" required class="form-control" #prov="ngModel">
           <option *ngFor="let prov of provinces;" [value] = prov>{{prov}}</option>
         </select>
+
+        <div *ngIf="prov.invalid && prov.touched" class="alert alert-danger">Invalid province</div>
       </li>
     </ol>
   </fieldset>
@@ -59,17 +69,18 @@
     <legend>Images</legend>
     <ol>
       <li>
-        <input type="file" name="images" id="images" (change)="onChange($event)" multiple="multiple" ngModel class="form-control">
+        <input type="file" name="images" id="images" (change)="onChange($event)"
+         multiple="multiple" ngModel class="form-control">
         <span class="sub-text">
           You can select up to <span id="images_number">5</span> Images </span>
       </li>
 
       <!-- <img *ngFor="let item of url" [src]="item" alt="Preview"> -->
-      <app-load-image *ngFor="let file of url" [src]="file"></app-load-image>
+      <app-load-image *ngFor="let file of urls" [src]="file"></app-load-image>
     </ol>
   </fieldset>
   (*) required fields
   <fieldset>
-    <button type="submit">Submit</button>
+    <button type="submit" [disabled]="!f.valid" class="btn btn-success">Submit</button>
   </fieldset>
 </form>

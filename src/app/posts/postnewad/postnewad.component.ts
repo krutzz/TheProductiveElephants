@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from './../../auth/auth.service';
 import { NgForm } from '@angular/forms';
+import { PostNew } from '../../shared/models/post-new';
 import { PostsService } from '../providers/posts-service/Posts.service';
 
 @Component({
@@ -9,42 +10,49 @@ import { PostsService } from '../providers/posts-service/Posts.service';
   templateUrl: './postnewad.component.html',
   styleUrls: ['./postnewad.component.css']
 })
-export class PostnewadComponent {
+export class PostnewadComponent implements OnInit {
+  post: PostNew;
   files: File[];
-  url: string[] = [];
+  urls: string[];
+  provinces: string[];
   constructor(private PostsService: PostsService, private AuthService: AuthService) { }
-  provinces: string[] = [
-    'Blagoevgrad',
-    'Burgas',
-    'Varna',
-    'Veliko Tarnovo',
-    'Vidin',
-    'Vratsa',
-    'Gabrovo',
-    'Dobrich',
-    'Kardzhali',
-    'Kyustendil',
-    'Lovech',
-    'Montana',
-    'Pazardzhik',
-    'Pernik',
-    'Pleven',
-    'Plovdiv',
-    'Pazgrad',
-    'Ruse',
-    'Silistra',
-    'Sliven',
-    'Smolyan',
-    'Sofia',
-    'Stara Zagora',
-    'Targovishte',
-    'Haskovo',
-    'Shumen',
-    'Yambol'
-  ];
+
+  ngOnInit(): void {
+    this.urls = [];
+    this.provinces = [
+      'Blagoevgrad',
+      'Burgas',
+      'Varna',
+      'Veliko Tarnovo',
+      'Vidin',
+      'Vratsa',
+      'Gabrovo',
+      'Dobrich',
+      'Kardzhali',
+      'Kyustendil',
+      'Lovech',
+      'Montana',
+      'Pazardzhik',
+      'Pernik',
+      'Pleven',
+      'Plovdiv',
+      'Pazgrad',
+      'Ruse',
+      'Silistra',
+      'Sliven',
+      'Smolyan',
+      'Sofia',
+      'Stara Zagora',
+      'Targovishte',
+      'Haskovo',
+      'Shumen',
+      'Yambol'
+    ];
+    this.post = new PostNew();
+  }
   onChange(event) {
     this.files = event.srcElement.files;
-
+    this.urls = [];
     if (event.target.files) {
       const tFiles = event.target.files;
       const length = tFiles.length;
@@ -53,7 +61,7 @@ export class PostnewadComponent {
           let reader: any;
           reader = new FileReader();
           reader.onload = (ev) => {
-            this.url.push(ev.target.result);
+            this.urls.push(ev.target.result);
           };
           reader.readAsDataURL(tFiles[i]);
         }
@@ -62,20 +70,15 @@ export class PostnewadComponent {
   }
 
   onSubmitAd(form: NgForm) {
-    const category = form.value.category;
-    const title = form.value.title;
-    const description = form.value.description;
-    const price = form.value.price;
-    const province = form.value.province;
     const currentuser = this.AuthService.currentUser().providerData;
     const date = new Date().toString();
     const views = 1;
     this.PostsService.postNewAd(
-      category,
-      title,
-      description,
-      price,
-      province,
+      this.post.category,
+      this.post.title,
+      this.post.description,
+      this.post.price,
+      this.post.province,
       currentuser,
       date,
       this.files,

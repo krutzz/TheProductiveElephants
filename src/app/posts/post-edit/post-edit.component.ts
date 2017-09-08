@@ -17,39 +17,42 @@ export class PostEditComponent implements OnInit {
   urls: string[] = [];
   id;
   post: any;
-  constructor(private route: ActivatedRoute, private postsService: PostsService, private AuthService: AuthService) { }
-  provinces: string[] = [
-    'Blagoevgrad',
-    'Burgas',
-    'Varna',
-    'Veliko Tarnovo',
-    'Vidin',
-    'Vratsa',
-    'Gabrovo',
-    'Dobrich',
-    'Kardzhali',
-    'Kyustendil',
-    'Lovech',
-    'Montana',
-    'Pazardzhik',
-    'Pernik',
-    'Pleven',
-    'Plovdiv',
-    'Pazgrad',
-    'Ruse',
-    'Silistra',
-    'Sliven',
-    'Smolyan',
-    'Sofia',
-    'Stara Zagora',
-    'Targovishte',
-    'Haskovo',
-    'Shumen',
-    'Yambol'
-  ];
+  provinces: string[];
+  constructor(private route: ActivatedRoute, private postsService:
+     PostsService, private AuthService: AuthService) { }
   ngOnInit(): void {
     this.id = this.route.snapshot.params.id;
     this.post = this.postsService.getPostById(this.id);
+    this.urls = [];
+    this.provinces = [
+      'Blagoevgrad',
+      'Burgas',
+      'Varna',
+      'Veliko Tarnovo',
+      'Vidin',
+      'Vratsa',
+      'Gabrovo',
+      'Dobrich',
+      'Kardzhali',
+      'Kyustendil',
+      'Lovech',
+      'Montana',
+      'Pazardzhik',
+      'Pernik',
+      'Pleven',
+      'Plovdiv',
+      'Pazgrad',
+      'Ruse',
+      'Silistra',
+      'Sliven',
+      'Smolyan',
+      'Sofia',
+      'Stara Zagora',
+      'Targovishte',
+      'Haskovo',
+      'Shumen',
+      'Yambol'
+    ];
   }
   onChange(event) {
     this.files = event.srcElement.files;
@@ -72,19 +75,19 @@ export class PostEditComponent implements OnInit {
   }
 
   onSubmitAd(form: NgForm) {
-    const category = form.value.category;
-    const title = form.value.title;
-    const description = form.value.description;
-    const price = form.value.price;
-    const province = form.value.province;
+    this.post.category = form.value.category;
+    this.post.title = form.value.title;
+    this.post.description = form.value.description;
+    this.post.price = form.value.price;
+    this.post.province = form.value.province;
     const currentuser = this.AuthService.currentUser().providerData;
     const date = new Date().toString();
     this.postsService.postEdit(
-      category,
-      title,
-      description,
-      price,
-      province,
+      this.post.category,
+      this.post.title,
+      this.post.description,
+      this.post.price,
+      this.post.province,
       currentuser,
       date,
       this.files,
