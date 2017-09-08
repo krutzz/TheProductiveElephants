@@ -48,7 +48,7 @@ export class PostsService {
     Promise.all(
       this.uploadImage(files)
     )
-      .then((images) =>
+      .then((images) => {
         this.posts.push({
           images,
           category,
@@ -59,7 +59,8 @@ export class PostsService {
           user,
           date,
           views
-        }));
+        });
+      });
     this.Router.navigate(['/']);
   }
 
@@ -72,7 +73,6 @@ export class PostsService {
     user,
     date,
     files,
-    views,
     id
   ) {
     const imageUrls = new Array();
@@ -88,12 +88,15 @@ export class PostsService {
           price,
           province,
           user,
-          date,
-          views
+          date
         }));
+    this.Router.navigate(['/']);
   }
 
   uploadImage(data) {
+    if (!data) {
+      return [];
+    }
     const promises = new Array;
     for (const item of data) {
       const promise = new Promise((res, rej) => {

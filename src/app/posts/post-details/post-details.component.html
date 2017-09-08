@@ -27,7 +27,7 @@
           <div class="col-4 col-md-3">
             <h4>Price</h4>
           </div>
-          <div class="col-3">{{post.price | currency:'EUR':true}}</div>
+          <div class="col-3">{{post.price | removeSpaces | formatEmpty:'0' | currency:'EUR':true}}</div>
         </div>
         <div class="row">
           <div class="col-4 col-md-3">

@@ -15,6 +15,6 @@
   </div>
   <div class="card-footer d-flex justify-content-between align-bottom">
     <div>{{post.date | date}}</div>
-    <div>Price: {{post.price | currency:'EUR':true }}</div>
+    <div>Price: {{post.price | removeSpaces | formatEmpty:'0' | currency:'EUR':true }}</div>
   </div>
 </div>
