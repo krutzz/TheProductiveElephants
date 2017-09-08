@@ -21,14 +21,12 @@ export class SignupComponent implements OnInit {
     onSignUp(form: NgForm) {
       this.email = form.value.email;
       const password = form.value.password;
-      this.AuthService.createUserWithEmailAndPassword(this.email, password).catch((error: any) => {
-        // Handle Errors here.
-        if (error) {
+      this.AuthService.createUserWithEmailAndPassword(this.email, password)
+      .then(user => {
+        this.Router.navigate(['/']);
+      })
+      .catch((error: any) => {
           this.alert.danger(error.message);
-        } else {
-          console.log('object');
-          this.Router.navigate(['/']);
-        }
       });
 
     }
