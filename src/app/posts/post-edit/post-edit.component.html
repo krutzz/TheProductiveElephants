@@ -10,7 +10,7 @@
     <ol>
       <li>
         <label for="category">Category(*)</label>
-        <select name="category" id="category" required
+        <select name="category" id="category" required #cat="ngModel"
          [(ngModel)] =  "post.category" class="form-control">
           <option value="BuyorSell">Buy or Sell</option>
           <option value="CoursesandClasses">Courses and Classes</option>
@@ -23,28 +23,31 @@
           <option value="Business Opportunities">Business Opportunities</option>
         </select>
         <div class="clear"></div>
+        <div *ngIf="cat.invalid && cat.touched" class="alert alert-danger">Invalid category</div>
       </li>
 
       <li>
         <label for="title">Headline(*)</label>
-        <input id="title" [(ngModel)] =  "post.title"  class="form-control" minlength="5" maxlength="30"
+        <input id="title" [(ngModel)] =  "post.title"  class="form-control" minlength="5" maxlength="30" #title="ngModel"
         name="title" type="text" placeholder="Please enter the ad title" required>
+        <div *ngIf="title.invalid && title.touched" class="alert alert-danger">Title must be between 5 and 30 symbols</div>
       </li>
 
       <li>
         <label for="description">Description(*)
         <br>
         </label>
-        <textarea id="description"  name="description" rows="10" minlength="5" maxlength="800" required
+        <textarea id="description"  name="description" rows="10" minlength="5" maxlength="800" required #desc="ngModel"
          [(ngModel)] =  "post.description" class="form-control"> </textarea>
+         <div *ngIf="desc.invalid && desc.touched" class="alert alert-danger">Description must be between 5 and 800 symbols</div>
         <br>
-        <span class="sub-text" style="position:relative;left:120px">800 characters maximum</span>
       </li>
 
       <li>
         <label for="price">Price(*) (€):</label>
-        <input id="price"  name="price" type="text" [(ngModel)] =  "post.price"
+        <input id="price"  name="price" type="text" [(ngModel)] =  "post.price" #price="ngModel"
         class="form-control" minlength="1" maxlength="10" required>
+        <div *ngIf="price.invalid && price.touched" class="alert alert-danger">Invalid price</div>
       </li>
     </ol>
 
@@ -52,9 +55,10 @@
 
       <li>
         <label for="province"> Province(*) </label>
-        <select name="province"  [(ngModel)] =  "post.province" class="form-control" required>
+        <select name="province"  [(ngModel)] =  "post.province" class="form-control" required #prov="ngModel">
           <option *ngFor="let prov of provinces;" [value] = prov>{{prov}}</option>
         </select>
+        <div *ngIf="prov.invalid && prov.touched" class="alert alert-danger">Invalid province</div>
       </li>
     </ol>
   </fieldset>

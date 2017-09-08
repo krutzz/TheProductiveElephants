@@ -22,8 +22,8 @@
           <option value="Business Opportunities">Business Opportunities</option>
         </select>
         <div class="clear"></div>
+        <div *ngIf="cat.invalid && cat.touched" class="alert alert-danger">Invalid category</div>
       </li>
-      <div *ngIf="cat.invalid && cat.touched" class="alert alert-danger">Invalid category</div>
       <li>
         <label for="title">Headline(*)</label>
         <input id="title" [(ngModel)] = "post.title" #title="ngModel" class="form-control" minlength="5" maxlength="30"
@@ -40,7 +40,6 @@
 
         <div *ngIf="desc.invalid && desc.touched" class="alert alert-danger">Description must be between 5 and 800 symbols</div>
         <br>
-        <span class="sub-text" style="position:relative;left:120px">800 characters maximum</span>
       </li>
 
       <li>
