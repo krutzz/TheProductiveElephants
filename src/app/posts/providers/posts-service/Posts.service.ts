@@ -59,9 +59,8 @@ export class PostsService {
           user,
           date,
           views
-        });
+        }).then((post) => this.Router.navigate([`posts/${post.path.pieces_[1]}`]));
       });
-    this.Router.navigate(['/']);
   }
 
   postEdit(
@@ -89,8 +88,7 @@ export class PostsService {
           province,
           user,
           date
-        }));
-    this.Router.navigate(['/']);
+        })).then(() => this.Router.navigate([`posts/${id}`]));
   }
 
   uploadImage(data) {
