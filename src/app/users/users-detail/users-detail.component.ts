@@ -14,7 +14,7 @@ export class UsersDetailComponent implements OnInit {
   email: string;
   userForm: FormGroup;
 
-  constructor(private authService: AuthService, private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute) { }
 
   private _user: User;
   ngOnInit() {

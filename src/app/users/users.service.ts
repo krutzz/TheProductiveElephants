@@ -14,4 +14,8 @@ export class UsersService {
     this.users.push(user);
   }
 
+  getUserbyEmail(email: string) {
+    return this.users;
+  }
+
 }
