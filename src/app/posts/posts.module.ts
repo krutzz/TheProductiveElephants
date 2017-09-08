@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
+import { FormatEmptyPipe } from './pipes/format-empty/format-empty.pipe';
 import { FormsModule } from '@angular/forms';
+import { MockPostDirective } from './mostpoluar/tests-mocks/mock-post.directive';
 import { MostpoluarComponent } from './mostpoluar/mostpoluar.component';
 import { NewPostPipe } from './pipes/transform-to-post/new-post.pipe';
 import { NgModule } from '@angular/core';
@@ -14,7 +16,6 @@ import { RemoveSpacesPipe } from './pipes/remove-spaces/remove-spaces.pipe';
 import { ReversePipe } from './pipes/reverse/reverse.pipe';
 import { UtilsModule } from './../shared/utils/utils.module';
 import { environment } from '../../environments/environment';
-import { FormatEmptyPipe } from './pipes/format-empty/format-empty.pipe';
 
 @NgModule({
   declarations: [
@@ -27,8 +28,9 @@ import { FormatEmptyPipe } from './pipes/format-empty/format-empty.pipe';
     ReversePipe,
     PostEditComponent,
     RemoveSpacesPipe,
-    FormatEmptyPipe
-],
+    FormatEmptyPipe,
+    MockPostDirective
+  ],
   imports: [
     CommonModule,
     FormsModule,
