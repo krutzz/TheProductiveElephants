@@ -26,6 +26,7 @@ export class SignupComponent implements OnInit {
         if (error) {
           this.alert.danger(error.message);
         } else {
+          console.log('object');
           this.Router.navigate(['/']);
         }
       });

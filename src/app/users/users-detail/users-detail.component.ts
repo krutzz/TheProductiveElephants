@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from './../../auth/auth.service';
+import { User } from '../../shared/models/user';
 
 @Component({
   selector: 'app-users-detail',
@@ -15,13 +16,16 @@ export class UsersDetailComponent implements OnInit {
 
   constructor(private authService: AuthService, private route: ActivatedRoute) { }
 
+  private _user: User;
   ngOnInit() {
     this.route.data
     .subscribe((data) => {
-      this.email = data.user.email;
+      this._user = new User(data.user.email, 'Pesho', 'Goshov', '');
     });
     this.userForm = new FormGroup({
-      email: new FormControl({ value: this.email, disabled: true })
+      email: new FormControl({ value: this._user.email, disabled: true }),
+      firstName: new FormControl({ value: this._user.firstName, disabled: true }),
+      lastName: new FormControl({ value: this._user.lastName, disabled: true })
     });
   }
 
