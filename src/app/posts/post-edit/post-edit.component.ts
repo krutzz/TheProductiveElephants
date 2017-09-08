@@ -17,13 +17,9 @@ export class PostEditComponent implements OnInit {
   urls: string[] = [];
   id;
   post: any;
-  category: string;
-  title: string;
-  description: string;
-  price: number;
-  province: string;
   provinces: string[];
-  constructor(private route: ActivatedRoute, private postsService: PostsService, private AuthService: AuthService) { }
+  constructor(private route: ActivatedRoute, private postsService:
+     PostsService, private AuthService: AuthService) { }
   ngOnInit(): void {
     this.id = this.route.snapshot.params.id;
     this.post = this.postsService.getPostById(this.id);
@@ -79,19 +75,19 @@ export class PostEditComponent implements OnInit {
   }
 
   onSubmitAd(form: NgForm) {
-    this.category = form.value.category;
-    this.title = form.value.title;
-    this.description = form.value.description;
-    this.price = form.value.price;
-    this.province = form.value.province;
+    this.post.category = form.value.category;
+    this.post.title = form.value.title;
+    this.post.description = form.value.description;
+    this.post.price = form.value.price;
+    this.post.province = form.value.province;
     const currentuser = this.AuthService.currentUser().providerData;
     const date = new Date().toString();
     this.postsService.postEdit(
-      this.category,
-      this.title,
-      this.description,
-      this.price,
-      this.province,
+      this.post.category,
+      this.post.title,
+      this.post.description,
+      this.post.price,
+      this.post.province,
       currentuser,
       date,
       this.files,

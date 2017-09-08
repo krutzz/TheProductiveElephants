@@ -10,7 +10,7 @@
     <ol>
       <li>
         <label for="category">Category(*)</label>
-        <select name="category" id="category" required="" ngModel class="form-control">
+        <select name="category" id="category" [(ngModel)] = "post.category" class="form-control">
           <option value="BuyorSell">Buy or Sell</option>
           <option value="CoursesandClasses">Courses and Classes</option>
           <option value="Cars">Cars</option>
@@ -26,21 +26,21 @@
 
       <li>
         <label for="title">Headline(*)</label>
-        <input id="title" ngModel class="form-control" name="title" type="text" placeholder="Please enter the ad title" required="" autofocus="">
+        <input id="title" [(ngModel)] = "post.title" class="form-control" name="title" type="text" placeholder="Please enter the ad title" required="" autofocus="">
       </li>
 
       <li>
         <label for="description">Description(*)
         <br>
         </label>
-        <textarea id="description" name="description" rows="10" ngModel class="form-control"> </textarea>
+        <textarea id="description" name="description" rows="10" [(ngModel)] = "post.description" class="form-control"> </textarea>
         <br>
         <span class="sub-text" style="position:relative;left:120px">800 characters maximum</span>
       </li>
 
       <li>
         <label for="price">Price (€):</label>
-        <input id="price" name="price" type="text" ngModel class="form-control">
+        <input id="price" name="price" type="text" [(ngModel)] = "post.price" class="form-control">
       </li>
     </ol>
 
@@ -48,7 +48,7 @@
 
       <li>
         <label for="province"> Province </label>
-        <select name="province" ngModel class="form-control">
+        <select name="province" [(ngModel)] = "post.province" class="form-control">
           <option *ngFor="let prov of provinces;" [value] = prov>{{prov}}</option>
         </select>
       </li>
@@ -59,13 +59,14 @@
     <legend>Images</legend>
     <ol>
       <li>
-        <input type="file" name="images" id="images" (change)="onChange($event)" multiple="multiple" ngModel class="form-control">
+        <input type="file" name="images" id="images" (change)="onChange($event)"
+         multiple="multiple" ngModel class="form-control">
         <span class="sub-text">
           You can select up to <span id="images_number">5</span> Images </span>
       </li>
 
       <!-- <img *ngFor="let item of url" [src]="item" alt="Preview"> -->
-      <app-load-image *ngFor="let file of url" [src]="file"></app-load-image>
+      <app-load-image *ngFor="let file of urls" [src]="file"></app-load-image>
     </ol>
   </fieldset>
   (*) required fields
