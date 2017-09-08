@@ -24,8 +24,9 @@ export class UsersDetailComponent implements OnInit {
     });
     this.userForm = new FormGroup({
       email: new FormControl({ value: this._user.email, disabled: true }),
-      firstName: new FormControl({ value: this._user.firstName, disabled: true }),
-      lastName: new FormControl({ value: this._user.lastName, disabled: true })
+      firstName: new FormControl({ value: this._user.firstName, disabled: false}),
+      lastName: new FormControl({ value: this._user.lastName, disabled: false}),
+      province: new FormControl({ value: this._user.province, disabled: false}),
     });
   }
 

@@ -6,16 +6,17 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import { User } from '../shared/models/user';
+import { UsersService } from './../users/users.service';
 
 @Injectable()
 export class AuthService {
 
-  constructor(private AngularFA: AngularFireAuth, private Router: Router, public af: AngularFireDatabase) { }
+  constructor(private AngularFA: AngularFireAuth, private Router: Router, public usersService: UsersService) { }
 
-  createUserWithEmailAndPassword(email: string, password: string): firebase.Promise<any> {
-    return this.AngularFA.auth.createUserWithEmailAndPassword(email, password).then((user) => {
-      const currentUser = new User(user.email, '', '', '');
-      return user;
+  createUser(user: User, password: string): firebase.Promise<any> {
+    return this.AngularFA.auth.createUserWithEmailAndPassword(user.email, password).then((newUser) => {
+      this.usersService.addUser(user);
+      return newUser;
     });
   }
 
