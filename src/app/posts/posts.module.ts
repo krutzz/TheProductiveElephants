@@ -10,9 +10,11 @@ import { PostnewadComponent } from './postnewad/postnewad.component';
 import { PostsComponent } from './posts-container/posts.component';
 import { PostsRoutingModule } from './posts-routing.module';
 import { PostsService } from './providers/posts-service/Posts.service';
+import { RemoveSpacesPipe } from './pipes/remove-spaces/remove-spaces.pipe';
 import { ReversePipe } from './pipes/reverse/reverse.pipe';
 import { UtilsModule } from './../shared/utils/utils.module';
 import { environment } from '../../environments/environment';
+import { FormatEmptyPipe } from './pipes/format-empty/format-empty.pipe';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { environment } from '../../environments/environment';
     PostDetailsComponent,
     MostpoluarComponent,
     ReversePipe,
-    PostEditComponent
+    PostEditComponent,
+    RemoveSpacesPipe,
+    FormatEmptyPipe
 ],
   imports: [
     CommonModule,
