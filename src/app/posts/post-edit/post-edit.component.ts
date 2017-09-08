@@ -79,7 +79,6 @@ export class PostEditComponent implements OnInit {
     const province = form.value.province;
     const currentuser = this.AuthService.currentUser().providerData;
     const date = new Date().toString();
-    const seen = 1;
     this.postsService.postEdit(
       category,
       title,
@@ -89,7 +88,6 @@ export class PostEditComponent implements OnInit {
       currentuser,
       date,
       this.files,
-      seen,
       this.id);
   }
 }
