@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from './../../auth/auth.service';
 import { NgForm } from '@angular/forms';
-import { Post } from '../../shared/models/post';
+import { PostNew } from '../../shared/models/post-new';
 import { PostsService } from '../providers/posts-service/Posts.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { PostsService } from '../providers/posts-service/Posts.service';
   styleUrls: ['./postnewad.component.css']
 })
 export class PostnewadComponent implements OnInit {
-  post: Post;
+  post: PostNew;
   files: File[];
   urls: string[];
   provinces: string[];
@@ -48,6 +48,7 @@ export class PostnewadComponent implements OnInit {
       'Shumen',
       'Yambol'
     ];
+    this.post = new PostNew();
   }
   onChange(event) {
     this.files = event.srcElement.files;

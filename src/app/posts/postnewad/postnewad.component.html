@@ -10,7 +10,7 @@
     <ol>
       <li>
         <label for="category">Category(*)</label>
-        <select name="category" id="category" [(ngModel)] = "post.category" class="form-control">
+        <select name="category" id="category" [(ngModel)] = "post.category" class="form-control" required>
           <option value="BuyorSell">Buy or Sell</option>
           <option value="CoursesandClasses">Courses and Classes</option>
           <option value="Cars">Cars</option>
@@ -26,29 +26,32 @@
 
       <li>
         <label for="title">Headline(*)</label>
-        <input id="title" [(ngModel)] = "post.title" class="form-control" name="title" type="text" placeholder="Please enter the ad title" required="" autofocus="">
+        <input id="title" [(ngModel)] = "post.title" class="form-control" minlength="5" maxlength="30"
+        name="title" type="text" placeholder="Please enter the ad title" required>
       </li>
 
       <li>
         <label for="description">Description(*)
         <br>
         </label>
-        <textarea id="description" name="description" rows="10" [(ngModel)] = "post.description" class="form-control"> </textarea>
+        <textarea id="description" name="description" rows="10" minlength="5" maxlength="800" required
+        [(ngModel)] = "post.description" class="form-control"> </textarea>
         <br>
         <span class="sub-text" style="position:relative;left:120px">800 characters maximum</span>
       </li>
 
       <li>
-        <label for="price">Price (€):</label>
-        <input id="price" name="price" type="text" [(ngModel)] = "post.price" class="form-control">
+        <label for="price">Price(*) (€):</label>
+        <input id="price" name="price" type="text" [(ngModel)] = "post.price"
+        class="form-control" minlength="1" maxlength="10" required>
       </li>
     </ol>
 
     <ol id="additional-fields">
 
       <li>
-        <label for="province"> Province </label>
-        <select name="province" [(ngModel)] = "post.province" class="form-control">
+        <label for="province"> Province(*) </label>
+        <select name="province" [(ngModel)] = "post.province" required class="form-control">
           <option *ngFor="let prov of provinces;" [value] = prov>{{prov}}</option>
         </select>
       </li>
@@ -71,6 +74,6 @@
   </fieldset>
   (*) required fields
   <fieldset>
-    <button type="submit">Submit</button>
+    <button type="submit" [disabled]="!f.valid" class="btn btn-success">Submit</button>
   </fieldset>
 </form>
