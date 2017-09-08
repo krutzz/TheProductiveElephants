@@ -1,9 +1,8 @@
 .container-fluid {
-    border: 2px solid black;
     border-radius: 5px;
 }
 
 .paggination {
-    border-top: 2px solid black;
+    border-top: 4px solid black;
     padding: 5px;
 }

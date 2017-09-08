@@ -1,9 +1,14 @@
+.container-fluid {
+    color:rgb(233, 236, 239);
+    font-weight: bold;
+}
+
 :host::ng-deep img {
     width: 20em;
 }
 
 .image-container {
-    border: 2px solid #687FB0;
+    border: 2px groove black;
     border-radius: 5px;
 }
 

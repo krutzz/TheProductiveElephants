@@ -1,0 +1,27 @@
+.pagination > li > a {
+    border: 2px solid black;
+    background-color: transparent;
+    font-weight: bold;
+    color: black;
+    font-size: 2em;
+}
+
+.pagination > li.active > a {
+    z-index: 3;
+    color: whitesmoke;
+    font-weight: bold;
+    border-color: #ddd;
+}
+
+.pagination > li > a:hover, 
+.pagination > li > .active, 
+.pagination > li > span:hover {
+    z-index: 3;
+    color: #23527c;
+    border-color: #ddd;
+}
+
+li.disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+}

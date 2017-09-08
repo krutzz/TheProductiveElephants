@@ -17,3 +17,8 @@ form#main ol ol li {
   border: none;
   float: left;
 }
+
+h2, legend {
+  color:rgb(233, 236, 239);
+  font-weight: bold;
+}
