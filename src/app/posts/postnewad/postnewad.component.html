@@ -11,15 +11,7 @@
       <li>
         <label for="category">Category(*)</label>
         <select name="category" id="category" #cat="ngModel" [(ngModel)] = "post.category" class="form-control" required>
-          <option value="BuyorSell">Buy or Sell</option>
-          <option value="CoursesandClasses">Courses and Classes</option>
-          <option value="Cars">Cars</option>
-          <option value="Properties">Properties</option>
-          <option value="Services">Services</option>
-          <option value="Jobs">Jobs</option>
-          <option value="Community">Community</option>
-          <option value="Events">Events</option>
-          <option value="Business Opportunities">Business Opportunities</option>
+          <option *ngFor="let prov of category" [value]="prov">{{prov}}</option>
         </select>
         <div class="clear"></div>
         <div *ngIf="cat.invalid && cat.touched" class="alert alert-danger">Invalid category</div>
@@ -56,7 +48,7 @@
       <li>
         <label for="province"> Province(*) </label>
         <select name="province" [(ngModel)] = "post.province" required class="form-control" #prov="ngModel">
-          <option *ngFor="let prov of provinces;" [value] = prov>{{prov}}</option>
+          <option *ngFor="let prov of provinces" [value] = prov>{{prov}}</option>
         </select>
 
         <div *ngIf="prov.invalid && prov.touched" class="alert alert-danger">Invalid province</div>

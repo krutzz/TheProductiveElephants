@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from './../../auth/auth.service';
+import { Category } from '../../shared/models/category.enum';
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { Post } from '../../shared/models/post';
@@ -20,6 +21,9 @@ export class PostEditComponent implements OnInit {
   post: any;
   provinces: string[];
   provincesObj;
+
+  category;
+  categoryObj;
   constructor(private route: ActivatedRoute, private postsService:
      PostsService, private AuthService: AuthService) { }
   ngOnInit(): void {
@@ -28,6 +32,8 @@ export class PostEditComponent implements OnInit {
     this.urls = [];
     this.provincesObj = Object.keys(Province).map(k => Province[k]);
     this.provinces = this.provincesObj.filter(v => typeof v === 'string') as string[];
+    this.categoryObj = Object.keys(Category).map(k => Category[k]);
+    this.category = this.categoryObj.filter(v => typeof v === 'string') as string[];
   }
   onChange(event) {
     this.files = event.srcElement.files;

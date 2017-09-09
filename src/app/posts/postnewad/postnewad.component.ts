@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from './../../auth/auth.service';
+import { Category } from '../../shared/models/category.enum';
 import { NgForm } from '@angular/forms';
 import { PostNew } from '../../shared/models/post-new';
 import { PostsService } from '../providers/posts-service/Posts.service';
@@ -17,6 +18,8 @@ export class PostnewadComponent implements OnInit {
   urls: string[];
   provinces;
   provincesObj;
+  category;
+  categoryObj;
 
   constructor(private PostsService: PostsService, private AuthService: AuthService) { }
 
@@ -24,6 +27,8 @@ export class PostnewadComponent implements OnInit {
     console.log(Province);
     this.provincesObj = Object.keys(Province).map(k => Province[k]);
     this.provinces = this.provincesObj.filter(v => typeof v === 'string') as string[];
+    this.categoryObj = Object.keys(Category).map(k => Category[k]);
+    this.category = this.categoryObj.filter(v => typeof v === 'string') as string[];
     this.urls = [];
     this.post = new PostNew();
   }
