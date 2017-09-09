@@ -1,4 +1,6 @@
+import { AngularFireModule } from 'angularfire2';
 import { AppPage } from './app.po';
+import { environment } from '../src/environments/environment';
 
 describe('nglx App', () => {
   let page: AppPage;
@@ -7,8 +9,15 @@ describe('nglx App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should have browser title DreamPlace', (done) => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    page.getBrowserTitle()
+      .then((title) => {
+        expect(title).toEqual('DreamPlace');
+        done();
+      })
+      .catch((err) => {
+        done(err);
+      });
   });
 });
