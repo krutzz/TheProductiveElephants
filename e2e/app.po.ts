@@ -1,8 +1,8 @@
 import { browser, by, element } from 'protractor';
 
 export class AppPage {
-  navigateTo() {
-    return browser.get('/');
+  navigateTo(route) {
+    return browser.get(route);
   }
 
   getParagraphText() {
@@ -11,5 +11,9 @@ export class AppPage {
 
   getBrowserTitle() {
     return browser.getTitle();
+  }
+
+  getElementByCSS(cssSelector: string) {
+    return element(by.css(cssSelector));
   }
 }
