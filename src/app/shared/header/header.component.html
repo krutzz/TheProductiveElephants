@@ -21,7 +21,7 @@
             <div *ngIf="!currentUser();then login else logout"></div>
             <ng-template #login>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/signin">Sign In</a>
+                    <a id="signIN" class="nav-link" routerLink="/signin">Sign In</a>
                 </li>
                 <li class="nav-item">
                     <a id="signUP" class="nav-link" routerLink="/signup">Sign Up</a>
@@ -32,7 +32,7 @@
                     <a class="nav-link" [routerLink]="['/user', 'id']">{{currentUser().email}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" (click)="logOut()">Logout</a>
+                    <a id="logOut" class="nav-link" (click)="logOut()">Logout</a>
                 </li>
             </ng-template>
         </ul>

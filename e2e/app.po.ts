@@ -16,4 +16,8 @@ export class AppPage {
   getElementByCSS(cssSelector: string) {
     return element(by.css(cssSelector));
   }
+
+  getElementById(id: string) {
+    return element(by.id(id));
+  }
 }
