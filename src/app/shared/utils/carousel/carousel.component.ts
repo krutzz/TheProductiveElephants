@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-carousel',
@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarouselComponent implements OnInit {
 
+  @Output() slideChangeEvent: EventEmitter<any> = new EventEmitter<any>();
+
+  @Input()
+  items;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  slideChange(event) {
+    this.slideChangeEvent.emit(event);
   }
 
 }
