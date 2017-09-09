@@ -4,6 +4,7 @@ import { AuthService } from './../../auth/auth.service';
 import { NgForm } from '@angular/forms';
 import { PostNew } from '../../shared/models/post-new';
 import { PostsService } from '../providers/posts-service/Posts.service';
+import { Province } from '../../shared/models/province.enum';
 
 @Component({
   selector: 'app-postnewad',
@@ -14,41 +15,25 @@ export class PostnewadComponent implements OnInit {
   post: PostNew;
   files: File[];
   urls: string[];
-  provinces: string[];
+  provinces;
+  provincesObj;
+
   constructor(private PostsService: PostsService, private AuthService: AuthService) { }
 
   ngOnInit(): void {
+    console.log(Province);
+    this.provincesObj = Object.keys(Province).map(k => Province[k]);
+    this.provinces = this.provincesObj.filter(v => typeof v === 'string') as string[];
     this.urls = [];
-    this.provinces = [
-      'Blagoevgrad',
-      'Burgas',
-      'Varna',
-      'Veliko Tarnovo',
-      'Vidin',
-      'Vratsa',
-      'Gabrovo',
-      'Dobrich',
-      'Kardzhali',
-      'Kyustendil',
-      'Lovech',
-      'Montana',
-      'Pazardzhik',
-      'Pernik',
-      'Pleven',
-      'Plovdiv',
-      'Pazgrad',
-      'Ruse',
-      'Silistra',
-      'Sliven',
-      'Smolyan',
-      'Sofia',
-      'Stara Zagora',
-      'Targovishte',
-      'Haskovo',
-      'Shumen',
-      'Yambol'
-    ];
     this.post = new PostNew();
+  }
+
+  getValues<T extends number>(e: any) {
+    return this.getObjValues(e).filter(v => typeof v === 'number') as T[];
+}
+
+   private getObjValues(e: any): (number | string)[] {
+    return Object.keys(e).map(k => e[k]);
   }
   onChange(event) {
     this.files = event.srcElement.files;

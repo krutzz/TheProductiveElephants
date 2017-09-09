@@ -6,6 +6,7 @@ import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { Post } from '../../shared/models/post';
 import { PostsService } from '../providers/posts-service/Posts.service';
+import { Province } from '../../shared/models/province.enum';
 
 @Component({
   selector: 'app-post-edit',
@@ -18,41 +19,15 @@ export class PostEditComponent implements OnInit {
   id;
   post: any;
   provinces: string[];
+  provincesObj;
   constructor(private route: ActivatedRoute, private postsService:
      PostsService, private AuthService: AuthService) { }
   ngOnInit(): void {
     this.id = this.route.snapshot.params.id;
     this.post = this.postsService.getPostById(this.id);
     this.urls = [];
-    this.provinces = [
-      'Blagoevgrad',
-      'Burgas',
-      'Varna',
-      'Veliko Tarnovo',
-      'Vidin',
-      'Vratsa',
-      'Gabrovo',
-      'Dobrich',
-      'Kardzhali',
-      'Kyustendil',
-      'Lovech',
-      'Montana',
-      'Pazardzhik',
-      'Pernik',
-      'Pleven',
-      'Plovdiv',
-      'Pazgrad',
-      'Ruse',
-      'Silistra',
-      'Sliven',
-      'Smolyan',
-      'Sofia',
-      'Stara Zagora',
-      'Targovishte',
-      'Haskovo',
-      'Shumen',
-      'Yambol'
-    ];
+    this.provincesObj = Object.keys(Province).map(k => Province[k]);
+    this.provinces = this.provincesObj.filter(v => typeof v === 'string') as string[];
   }
   onChange(event) {
     this.files = event.srcElement.files;
