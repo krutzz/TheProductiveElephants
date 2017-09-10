@@ -12,7 +12,6 @@ import { PostsComponent } from './posts-container/posts.component';
 import { PostsRoutingModule } from './posts-routing.module';
 import { PostsService } from './providers/posts-service/Posts.service';
 import { RemoveSpacesPipe } from './pipes/remove-spaces/remove-spaces.pipe';
-import { ReversePipe } from './pipes/reverse/reverse.pipe';
 import { UtilsModule } from './../shared/utils/utils.module';
 import { environment } from '../../environments/environment';
 
@@ -24,7 +23,6 @@ import { environment } from '../../environments/environment';
     NewPostPipe,
     PostDetailsComponent,
     MostpoluarComponent,
-    ReversePipe,
     PostEditComponent,
     RemoveSpacesPipe,
     FormatEmptyPipe
