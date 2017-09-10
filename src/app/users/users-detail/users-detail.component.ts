@@ -18,7 +18,7 @@ export class UsersDetailComponent implements OnInit {
   userForm: FormGroup;
   currentUserKey: string;
   alert: Alert;
-  posts: Post[];
+  posts: Post[] = [];
 
   constructor(private route: ActivatedRoute, private usersService: UsersService, private postsService: PostsService) { }
 
