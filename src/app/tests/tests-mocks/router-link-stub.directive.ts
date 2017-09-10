@@ -1,6 +1,7 @@
 import { Directive, HostListener, Input } from '@angular/core';
 
 @Directive({
+  // tslint:disable-next-line:directive-selector
   selector: '[routerLink]',
 })
 export class RouterLinkStubDirective {

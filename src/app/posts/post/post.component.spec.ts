@@ -2,11 +2,11 @@ import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
 import { By } from '@angular/platform-browser';
 import { FormatEmptyPipe } from '../pipes/format-empty/format-empty.pipe';
-import { MockLoadImageDirective } from "../../tests/tests-mocks/mock-load-image.directive";
+import { MockLoadImageDirective } from '../../tests/tests-mocks/mock-load-image.directive';
 import { Post } from '../../shared/models/post';
 import { PostComponent } from './post.component';
 import { RemoveSpacesPipe } from '../pipes/remove-spaces/remove-spaces.pipe';
-import { RouterLinkStubDirective } from "../../tests/tests-mocks/router-link-stub.directive";
+import { RouterLinkStubDirective } from '../../tests/tests-mocks/router-link-stub.directive';
 
 describe('PostComponent', () => {
   let component: PostComponent;
@@ -17,7 +17,6 @@ describe('PostComponent', () => {
     'category': 'Cars',
     'date': 'Sun Aug 27 2017 11:25:17 GMT+0300 (FLE Daylight Time)',
     'description': 'No description',
-    // tslint:disable-next-line:max-line-length
     'images': ['img'],
     'price': '100000',
     'province': 'Sofia',
