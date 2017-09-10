@@ -14,22 +14,22 @@ export class SigninComponent implements OnInit {
   email: string;
   password: string;
   constructor(private AuthService: AuthService) { }
-    ngOnInit() {
-      this.alert = new Alert();
-    }
+  ngOnInit() {
+    this.alert = new Alert();
+  }
 
-    onSignIn(form: NgForm) {
-      // const password = form.value.password;
-      this.AuthService.signInWithEmailAndPassword(this.email, this.password).then(userInfo => {
-        console.log(userInfo);
-      }).catch((error: any) => {
-        // Handle Errors here.
-        if (error) {
-          this.alert.danger(error.message);
-        }
-      });
-    }
-    public closeAlert(alert: Alert) {
-      this.alert.close();
-    }
+  onSignIn(form: NgForm) {
+    // const password = form.value.password;
+    this.AuthService.signInWithEmailAndPassword(this.email, this.password).then(userInfo => {
+      console.log(userInfo);
+    }).catch((error: any) => {
+      // Handle Errors here.
+      if (error) {
+        this.alert.danger(error.message);
+      }
+    });
+  }
+  public closeAlert(alert: Alert) {
+    this.alert.close();
+  }
 }
