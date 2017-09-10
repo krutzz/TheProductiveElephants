@@ -36,7 +36,7 @@
 
       <li>
         <label for="price">Price(*) (€):</label>
-        <input id="price" name="price" type="text" [(ngModel)] = "post.price" #price="ngModel"
+        <input id="price" name="price" type="number" [(ngModel)] = "post.price" #price="ngModel"
         class="form-control" minlength="1" maxlength="10" required>
 
         <div *ngIf="price.invalid && price.touched" class="alert alert-danger">Invalid price</div>
