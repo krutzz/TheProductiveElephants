@@ -25,16 +25,13 @@ export class UsersDetailComponent implements OnInit {
   ngOnInit() {
     this.route.data
     .subscribe((data) => {
-      console.log(data.user[0]);
       const user = data.user[0];
-
       this._user = new User(user.email, user.firstName, user.lastName, '');
       this.currentUserKey = data.user[0].$key;
       this.postsService.getPostsByQuery({
           orderByChild: 'user/0/email',
-          equalTo: 'test5@test.com'
+          equalTo: this._user.email
     }).subscribe((snapshot) => {
-      console.log(snapshot);
       this.posts = snapshot;
     });
     });
@@ -47,7 +44,6 @@ export class UsersDetailComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.currentUserKey);
     const updatedFirstName = this.userForm.controls['firstName'].value;
     const updatedLastName = this.userForm.controls['lastName'].value;
     const updatedProvince = this.userForm.controls['province'].value;
