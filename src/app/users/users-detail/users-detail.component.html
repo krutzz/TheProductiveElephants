@@ -17,3 +17,19 @@
         </form>
     </div>
 </div>
+<h1>My Ads</h1>
+<div class="container-fluid">
+    <div *ngIf="posts else PostLoading">
+        <ul class="list-unstyled">
+            <li class="mt-2" *ngFor="let post of posts">
+                <app-post [post]="post | newPost"></app-post>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<ng-template #PostLoading>
+    <div class=" d-flex justify-content-center align-items-center ">
+        <img [src]="loadingSpiner">
+    </div>
+</ng-template>

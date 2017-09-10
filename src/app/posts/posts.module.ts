@@ -34,7 +34,9 @@ import { environment } from '../../environments/environment';
     PostsRoutingModule,
   ],
   exports: [
-    MostpoluarComponent
+    MostpoluarComponent,
+    PostComponent,
+    NewPostPipe
   ],
   providers: [PostsService],
 })

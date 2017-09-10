@@ -3,6 +3,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from './../../auth/auth.service';
+import { Post } from './../../shared/models/post';
+import { PostsService } from './../../posts/providers/posts-service/Posts.service';
 import { User } from '../../shared/models/user';
 import { UsersService } from './../users.service';
 
@@ -15,7 +17,9 @@ export class UsersDetailComponent implements OnInit {
   userForm: FormGroup;
   currentUserKey: string;
 
-  constructor(private route: ActivatedRoute, private usersService: UsersService) { }
+  posts: Post[];
+
+  constructor(private route: ActivatedRoute, private usersService: UsersService, private postsService: PostsService) { }
 
   private _user: User;
   ngOnInit() {
@@ -26,6 +30,13 @@ export class UsersDetailComponent implements OnInit {
 
       this._user = new User(user.email, user.firstName, user.lastName, '');
       this.currentUserKey = data.user[0].$key;
+      this.postsService.getPostsByQuery({
+          orderByChild: 'user/0/email',
+          equalTo: 'test5@test.com'
+    }).subscribe((snapshot) => {
+      console.log(snapshot);
+      this.posts = snapshot;
+    });
     });
     this.userForm = new FormGroup({
       email: new FormControl({ value: this._user.email, disabled: true }),
@@ -42,7 +53,6 @@ export class UsersDetailComponent implements OnInit {
     const updatedProvince = this.userForm.controls['province'].value;
 
     const updatedUser = new User(this._user.email, updatedFirstName, updatedLastName, updatedProvince);
-    console.log(updatedUser);
     this.usersService.updateUserDetails(this.currentUserKey, updatedUser);
   }
 
