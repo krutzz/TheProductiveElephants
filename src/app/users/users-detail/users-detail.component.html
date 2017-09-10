@@ -17,7 +17,7 @@
         </form>
     </div>
 </div>
-<h1>My Ads</h1>
+<h1 *ngIf="posts.length > 0">My Ads</h1>
 <div class="container-fluid">
     <div *ngIf="posts else PostLoading">
         <ul class="list-unstyled">
