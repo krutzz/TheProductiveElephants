@@ -5,12 +5,15 @@
                 <label for="email">Mail</label>
                 <input type="email" id="email" name="email" required email [(ngModel)]="email" #eml="ngModel" class="form-control">
                 <div class="pt-4" *ngIf="!eml.valid && eml.touched">
-                    <ngb-alert [dismissible]="false" [type]="'danger'">Email is required!</ngb-alert>
+                    <ngb-alert [dismissible]="false" [type]="'danger'">Valid email is required!</ngb-alert>
                 </div>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" required ngModel class="form-control">
+                <input type="password" id="password" name="password" required [(ngModel)]="password" #pwd="ngModel" class="form-control">
+                <div class="pt-4" *ngIf="!pwd.valid && pwd.touched">
+                    <ngb-alert [dismissible]="false" [type]="'danger'">Password is required!</ngb-alert>
+                </div>
             </div>
             <button class="btn btn-succsses" type="submit" [disabled]="!f.valid">Sign In</button>
         </form>
