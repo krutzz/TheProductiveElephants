@@ -28,6 +28,10 @@
     </div>
 </div>
 
+<div class="pt-4" *ngIf="alert.newAlert">
+    <ngb-alert [type]="alert.type" (close)="closeAlert(alert)">{{ alert.message }}</ngb-alert>
+</div>
+
 <ng-template #PostLoading>
     <div class=" d-flex justify-content-center align-items-center ">
         <img [src]="loadingSpiner">

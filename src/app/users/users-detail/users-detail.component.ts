@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import { ActivatedRoute } from '@angular/router';
+import { Alert } from './../../shared/models/alert';
 import { AuthService } from './../../auth/auth.service';
 import { Post } from './../../shared/models/post';
 import { PostsService } from './../../posts/providers/posts-service/Posts.service';
@@ -16,7 +17,7 @@ import { UsersService } from './../users.service';
 export class UsersDetailComponent implements OnInit {
   userForm: FormGroup;
   currentUserKey: string;
-
+  alert: Alert;
   posts: Post[];
 
   constructor(private route: ActivatedRoute, private usersService: UsersService, private postsService: PostsService) { }
@@ -24,23 +25,30 @@ export class UsersDetailComponent implements OnInit {
   private _user: User;
   ngOnInit() {
     this.route.data
-    .subscribe((data) => {
-      const user = data.user[0];
-      this._user = new User(user.email, user.firstName, user.lastName, '');
-      this.currentUserKey = data.user[0].$key;
-      this.postsService.getPostsByQuery({
+      .subscribe((data) => {
+        const user = data.user[0];
+        this._user = new User(user.email, user.firstName, user.lastName, '');
+        this.currentUserKey = data.user[0].$key;
+        this.postsService.getPostsByQuery({
           orderByChild: 'user/0/email',
           equalTo: this._user.email
-    }).subscribe((snapshot) => {
-      this.posts = snapshot;
-    });
-    });
+        }).subscribe((snapshot) => {
+          this.posts = snapshot;
+        });
+      });
+
+    this.alert = new Alert();
+
     this.userForm = new FormGroup({
       email: new FormControl({ value: this._user.email, disabled: true }),
-      firstName: new FormControl({ value: this._user.firstName, disabled: false}),
-      lastName: new FormControl({ value: this._user.lastName, disabled: false}),
-      province: new FormControl({ value: this._user.province, disabled: false}),
+      firstName: new FormControl({ value: this._user.firstName, disabled: false }),
+      lastName: new FormControl({ value: this._user.lastName, disabled: false }),
+      province: new FormControl({ value: this._user.province, disabled: false }),
     });
+  }
+
+  public closeAlert(alert: Alert) {
+    this.alert.close();
   }
 
   onSubmit() {
@@ -49,7 +57,11 @@ export class UsersDetailComponent implements OnInit {
     const updatedProvince = this.userForm.controls['province'].value;
 
     const updatedUser = new User(this._user.email, updatedFirstName, updatedLastName, updatedProvince);
-    this.usersService.updateUserDetails(this.currentUserKey, updatedUser);
+    this.usersService.updateUserDetails(this.currentUserKey, updatedUser)
+      .then(() => {
+        this.alert.success('Your profile was updated!');
+      }).catch((error) => {
+        this.alert.danger(error.message);
+      });
   }
-
 }

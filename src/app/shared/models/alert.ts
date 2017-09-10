@@ -18,4 +18,10 @@ export class Alert {
     this.message = errorMessage;
     this.type = 'danger';
   }
+
+  public success(errorMessage: string): void {
+    this.newAlert = true;
+    this.message = errorMessage;
+    this.type = 'success';
+  }
 }

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PostsModule } from './../posts/posts.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserResolverService } from './user-resolver.service';
@@ -12,7 +13,8 @@ import { UsersService } from './users.service';
     CommonModule,
     UserRoutingModule,
     ReactiveFormsModule,
-    PostsModule
+    PostsModule,
+    NgbModule
   ],
   declarations: [UsersDetailComponent],
   providers: [UserResolverService, UsersService]

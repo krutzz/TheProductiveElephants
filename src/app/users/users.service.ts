@@ -10,7 +10,7 @@ export class UsersService {
 
   constructor(public af: AngularFireDatabase) {
     this.users = af.list('users', { preserveSnapshot: true });
-   }
+  }
 
   addUser(user: User) {
     this.users.push(user);
@@ -25,7 +25,7 @@ export class UsersService {
     });
   }
 
-  updateUserDetails(key: string, updatedUser: User): void {
-    this.af.object(`users/${key}`).update(updatedUser);
+  updateUserDetails(key: string, updatedUser: User) {
+    return this.af.object(`users/${key}`).update(updatedUser);
   }
 }
