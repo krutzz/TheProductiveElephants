@@ -20,6 +20,8 @@ export class LoadImageComponent implements OnInit {
     }
   }
 
+  loaded = false;
+
   get src(): string {
     return this._src;
   }

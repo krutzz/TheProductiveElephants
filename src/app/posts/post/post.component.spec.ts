@@ -2,11 +2,11 @@ import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
 import { By } from '@angular/platform-browser';
 import { FormatEmptyPipe } from '../pipes/format-empty/format-empty.pipe';
-import { MockLoadImageDirective } from './tests-mocks/mock-load-image.directive';
+import { MockLoadImageDirective } from "../../tests/tests-mocks/mock-load-image.directive";
 import { Post } from '../../shared/models/post';
 import { PostComponent } from './post.component';
 import { RemoveSpacesPipe } from '../pipes/remove-spaces/remove-spaces.pipe';
-import { RouterLinkStubDirective } from '../../tests/router-link-stub/router-link-stub.directive';
+import { RouterLinkStubDirective } from "../../tests/tests-mocks/router-link-stub.directive";
 
 describe('PostComponent', () => {
   let component: PostComponent;
