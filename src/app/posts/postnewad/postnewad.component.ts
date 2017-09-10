@@ -24,7 +24,6 @@ export class PostnewadComponent implements OnInit {
   constructor(private PostsService: PostsService, private AuthService: AuthService) { }
 
   ngOnInit(): void {
-    console.log(Province);
     this.provincesObj = Object.keys(Province).map(k => Province[k]);
     this.provinces = this.provincesObj.filter(v => typeof v === 'string') as string[];
     this.categoryObj = Object.keys(Category).map(k => Category[k]);
