@@ -8,7 +8,9 @@ import { User } from './../shared/models/user';
 export class UsersService {
   users: FirebaseListObservable<any>;
 
-  constructor(public af: AngularFireDatabase) { }
+  constructor(public af: AngularFireDatabase) {
+    this.users = af.list('users', { preserveSnapshot: true });
+   }
 
   addUser(user: User) {
     this.users.push(user);
