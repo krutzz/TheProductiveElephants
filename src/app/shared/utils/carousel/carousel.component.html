@@ -1,27 +1,33 @@
 <div class="jumbotron">
-    <div class="container">
-        <ngb-carousel>
+    <div class="container" *ngIf="items.length > 0 else PostLoading">
+        <ngb-carousel (slide)="slideChange($event)">
             <ng-template ngbSlide>
-                <img src="https://lorempixel.com/900/500?r=1" alt="Random first slide">
+                <a href="{{items[0].url}}"><img class="img-fluid" src="{{items[0].urlToImage}}" alt="Random first slide"></a>
                 <div class="carousel-caption">
-                    <h3>First slide label</h3>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    <h3>{{items[0].title}}</h3>
+                    <p>{{items[0].description}}</p>
                 </div>
             </ng-template>
             <ng-template ngbSlide>
-                <img src="https://lorempixel.com/900/500?r=2" alt="Random second slide">
+                <a href="{{items[1].url}}"><img class="img-fluid" src="{{items[1].urlToImage}}" alt="Random first slide"></a>
                 <div class="carousel-caption">
-                    <h3>Second slide label</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <h3>{{items[1].title}}</h3>
+                    <p>{{items[1].description}}</p>
                 </div>
             </ng-template>
             <ng-template ngbSlide>
-                <img src="https://lorempixel.com/900/500?r=3" alt="Random third slide">
+                <a href="{{items[2].url}}"><img class="img-fluid" src="{{items[2].urlToImage}}" alt="Random first slide"></a>
                 <div class="carousel-caption">
-                    <h3>Third slide label</h3>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                    <h3>{{items[2].title}}</h3>
+                    <p>{{items[2].description}}</p>
                 </div>
             </ng-template>
         </ngb-carousel>
     </div>
 </div>
+
+<ng-template #PostLoading>
+    <div class=" d-flex justify-content-center align-items-center ">
+      <img [src]="loadingSpiner ">
+    </div>
+  </ng-template>

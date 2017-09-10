@@ -13,7 +13,7 @@ export class MostpoluarComponent implements OnInit {
 
   loadingSpiner;
 
-  posts: Observable<Post[]>;
+  posts: Post[];
 
   constructor(private postsService: PostsService) {
     // tslint:disable-next-line:max-line-length
@@ -21,9 +21,11 @@ export class MostpoluarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.posts = this.postsService.getPostsByQuery({
+    this.postsService.getPostsByQuery({
       orderByChild: 'views',
       limitToLast: 5,
+    }).subscribe((snapshot) => {
+      this.posts = snapshot.reverse();
     });
   }
 }

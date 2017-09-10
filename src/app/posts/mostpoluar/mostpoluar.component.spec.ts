@@ -1,13 +1,12 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
 import { By } from '@angular/platform-browser';
-import { MockPostDirective } from './tests-mocks/mock-post.directive';
+import { MockPostDirective } from '../../tests/tests-mocks/mock-post.directive';
 import { MostpoluarComponent } from './mostpoluar.component';
 import { NewPostPipe } from '../pipes/transform-to-post/new-post.pipe';
 import { Post } from './../../shared/models/post';
-import { PostServiceMockService } from '../providers/posts-service-mock/post-service-mock.service';
+import { PostServiceMockService } from '../../tests/providers/posts-service-mock/post-service-mock.service';
 import { PostsService } from '../providers/posts-service/Posts.service';
-import { ReversePipe } from '../pipes/reverse/reverse.pipe';
 
 const post = new Post({
   '$key': '-KsXmtFl4altqKAOtexA',
@@ -35,7 +34,6 @@ describe('MostpoluarComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         MostpoluarComponent,
-        ReversePipe,
         NewPostPipe,
         MockPostDirective
       ],

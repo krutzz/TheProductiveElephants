@@ -35,6 +35,11 @@
           </div>
           <div class="col-3">{{post.province}}</div>
         </div>
+        <div class="row">
+          <div class="col-4 col-md-3">
+            <button class="btn btn-danger" *ngIf="this.currentUser && this.currentUser.email === this.post.user[0].email" (click)="edit()">Edit</button>
+          </div>
+        </div>
       </div>
     </div>
     <div class="row">
