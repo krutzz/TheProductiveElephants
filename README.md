@@ -1,3 +1,25 @@
+![Adversents](https://github.com/tdochev/TheProductiveElephants/blob/master/src/assets/imgs/logo.png)
+# TeamWorkProject
+## Telerik Academy - SPA application with Angular
+
+### Introduction
+
+This is a basic system that will keep record of available advertisements, and will work as connecting bridge between customer and advertiser.
+Due to this system there is no need to visit various places in search desired advertisement. The information of various advertisements in various locations can be accessible at one place.
+
+### App Features
+
+There are several features for better game experience:
+
+- **Main Menu Screen - Public**
+  - **Most popular advertisements** - Most popular advertisements by views
+  - **Login** - Login form with validation
+  - **Register** - Registration form with validation
+
+  - **Main Menu Screen - Private**
+  - **Dashboard - profile** - List with all the ads, as well as the ability to edit.
+  - **Post a New add** - Add new advertisement
+
 # TheProductiveElephants Angular Course Project 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.1.
